@@ -268,8 +268,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c47f45d7336ccee46b560fd2409b05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rbody2d: {fileID: 0}
-  enemySpeed: 0
+  rbody2d: {fileID: 781840380}
+  enemySpeed: 1
 --- !u!61 &781840382
 BoxCollider2D:
   m_ObjectHideFlags: 0
