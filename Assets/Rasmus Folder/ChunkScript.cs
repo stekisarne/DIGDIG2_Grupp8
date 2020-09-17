@@ -6,10 +6,10 @@ public class ChunkScript : MonoBehaviour
 {
     [SerializeField] GameObject[] chunks;
     [SerializeField] GameObject chunkParent;
-    GameObject currentChunk;
+    [SerializeField] GameObject currentChunk;
+    public GameObject LoadedChunk;
     GameObject chunkToLoad;
     GameObject previousChunk;
-    public GameObject LoadedChunk;
     int distanceFromStart = 0;
     
     void Start()
@@ -22,7 +22,9 @@ public class ChunkScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             LoadChunk();
+            DeloadChunk();
         }
+
     }
 
     void LoadChunk()
@@ -42,5 +44,14 @@ public class ChunkScript : MonoBehaviour
         LoadedChunk = Instantiate(chunkToLoad, transform.position + newPos, Quaternion.identity, chunkParent.transform);
 
         print("loaded " + chunkToLoad.name);
+    }
+
+    void DeloadChunk()
+    {
+        previousChunk = currentChunk;
+        currentChunk = LoadedChunk;
+        print("Deloaded " + previousChunk);
+        Destroy(previousChunk);
+
     }
 }
