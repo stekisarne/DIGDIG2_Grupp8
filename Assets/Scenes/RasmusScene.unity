@@ -498,7 +498,7 @@ PrefabInstance:
     - target: {fileID: 2247862224727274863, guid: 21e563176f3b4d54c93a8a521f9a500d, type: 3}
       propertyPath: chunkManagerScript
       value: 
-      objectReference: {fileID: 405165825}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 21e563176f3b4d54c93a8a521f9a500d, type: 3}
 --- !u!1 &2133316576

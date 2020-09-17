@@ -57,7 +57,7 @@ public class ChunkManagerScript : MonoBehaviour
         previousChunk = currentChunk;
         currentChunk = LoadedChunk;
         print("Deloaded " + previousChunk);
-        Destroy(previousChunk);
+        //Destroy(previousChunk);
 
     }
 }
