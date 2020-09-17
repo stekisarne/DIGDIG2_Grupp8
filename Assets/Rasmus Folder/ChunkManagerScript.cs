@@ -31,7 +31,7 @@ public class ChunkManagerScript : MonoBehaviour
         
     }
 
-    void LoadChunk()
+    public void LoadChunk()
     {
         int i;
 
@@ -52,7 +52,7 @@ public class ChunkManagerScript : MonoBehaviour
         print("loaded " + chunkToLoad.name);
     }
 
-    void DeloadChunk()
+    public void DeloadChunk()
     {
         previousChunk = currentChunk;
         currentChunk = LoadedChunk;
