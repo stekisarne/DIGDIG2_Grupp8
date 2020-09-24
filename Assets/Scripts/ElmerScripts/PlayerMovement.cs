@@ -7,9 +7,18 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rBody;
     private Animator anim;
 
-    public enum PlayerState { Moving, Fighting, Idling }
-    PlayerState currentState;
-    // currentstate = PlayerState.Idling;
+    public enum PlayerCollisionState { ground, left, right, none }
+    PlayerCollisionState collisionState;
+
+    // collisionState = PlayerCollisionState.ground;
+
+    /* 
+    if (collisionState == PlayerState.ground)
+    {
+    
+        }
+        
+        */
 
     [Header("restrictions")]
     public float maxMoveSpeed;
@@ -35,11 +44,19 @@ public class PlayerMovement : MonoBehaviour
         GroundWallCheck();
     }
 
+    //set what the player is coliding with for the purpouses of jumping and wallclimbing
     void GroundWallCheck()
     {
-        
+        RaycastHit2D downHit = Physics2D.Raycast(this.gameObject.transform.position, -Vector2.up, 1f); // this shit dont work
+        if (downHit.collider.tag == "Untagged")
+        {
+            collisionState = PlayerCollisionState.ground;
+            Debug.Log(collisionState);
+        }
     }
 
+   
+    // basic walking you get it
     public void Walk()
     {
         if (Input.GetAxis("Horizontal") != 0)
@@ -61,6 +78,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    // jump and potential jump resets
     public void Jump()
     {
         if (Input.GetKeyDown("space"))
