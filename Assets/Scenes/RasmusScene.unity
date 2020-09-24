@@ -267,6 +267,7 @@ MonoBehaviour:
   LoadedChunk: {fileID: 398095036}
   chunkScript: {fileID: 0}
   player: {fileID: 1582308957}
+  chunkSize: 20
 --- !u!4 &405165826
 Transform:
   m_ObjectHideFlags: 0
