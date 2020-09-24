@@ -39,6 +39,8 @@ public class ChunkManagerScript : MonoBehaviour
 
         Vector3 newPos;
 
+        BoxCollider2D prevCollider = currentChunk.GetComponent<BoxCollider2D>();
+        prevCollider.enabled = false;
 
 
         int i = Random.Range(0, chunks.Length);
