@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody2D rBody;
+    private Animator anim;
 
     public enum PlayerState { Moving, Fighting, Idling }
     PlayerState currentState;
@@ -23,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rBody = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -30,15 +32,19 @@ public class PlayerMovement : MonoBehaviour
     {
         Walk();
         Jump();
+        GroundWallCheck();
+    }
 
-
-
+    void GroundWallCheck()
+    {
+        
     }
 
     public void Walk()
     {
         if (Input.GetAxis("Horizontal") != 0)
         {
+            anim.SetBool("walking", true);
             rBody.velocity = new Vector2 (Input.GetAxis("Horizontal") * moveSpeed, rBody.velocity.y);
             if (Input.GetAxis("Horizontal") >= 0)
             {
@@ -49,13 +55,17 @@ public class PlayerMovement : MonoBehaviour
                 transform.rotation = new Quaternion (0, 180, 0, 0);
             }
         }
+        else
+        {
+            anim.SetBool("walking", false);
+        }
     }
 
     public void Jump()
     {
         if (Input.GetKeyDown("space"))
         {
-            Debug.Log("jump");
+            //anim.SetBool("jumping",true);
             rBody.velocity = new Vector2(rBody.velocity.x, jumpForce);
         }
     }
