@@ -4,20 +4,17 @@ using UnityEngine;
 
 public class ChunkScript : MonoBehaviour
 {
-    [SerializeField] ChunkManagerScript chunkManagerScript;
-
-    private void Start()
+    ChunkManagerScript chunkManagerScript;
+    private void Awake()
     {
         chunkManagerScript = GameObject.FindGameObjectWithTag("ChunkHandler").transform.GetComponent<ChunkManagerScript>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        chunkManagerScript.LoadChunk();
+        if(collision.tag == "Player")
+        {
+            chunkManagerScript.LoadChunk();
+        }
     }
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        //chunkManagerScript.DeloadChunk();
-    }
-
 }

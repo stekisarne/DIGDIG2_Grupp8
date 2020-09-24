@@ -13,8 +13,9 @@ public class ChunkManagerScript : MonoBehaviour
     int distanceFromStart = 0;
     public ChunkScript chunkScript;
     public GameObject player;
-    float distancePlayerChunk;
-    
+    [SerializeField] int chunkSize;
+    int lastNumber;
+
     void Start()
     {
 
@@ -33,13 +34,26 @@ public class ChunkManagerScript : MonoBehaviour
 
     public void LoadChunk()
     {
-        int i;
+        previousChunk = currentChunk;
+        currentChunk = LoadedChunk;
 
         Vector3 newPos;
 
-        distanceFromStart = distanceFromStart - 20;
+        BoxCollider2D prevCollider = currentChunk.GetComponent<BoxCollider2D>();
+        prevCollider.enabled = false;
 
-        i = Random.Range(0, chunks.Length);
+
+        int i = Random.Range(0, chunks.Length);
+
+        while (i == lastNumber)
+        {
+            i = Random.Range(0, chunks.Length);
+        }
+
+        lastNumber = i;
+
+
+        distanceFromStart = distanceFromStart - chunkSize;
 
         newPos = new Vector3(0f, (float)distanceFromStart, 0f);
 
