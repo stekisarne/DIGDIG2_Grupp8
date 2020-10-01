@@ -386,7 +386,7 @@ MonoBehaviour:
   maxMoveSpeed: 0
   maxFallSpeed: 0
   moveSpeed: 10
-  jumpForce: 10
+  jumpForce: 12
 --- !u!95 &1338151789
 Animator:
   serializedVersion: 3

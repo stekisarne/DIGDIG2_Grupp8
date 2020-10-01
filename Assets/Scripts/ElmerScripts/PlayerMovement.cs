@@ -7,18 +7,13 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rBody;
     private Animator anim;
 
+    public GameObject groundCheck;
+    public GameObject leftCheck;
+    public GameObject rightCheck;
+
     public enum PlayerCollisionState { ground, left, right, none }
     PlayerCollisionState collisionState;
 
-    // collisionState = PlayerCollisionState.ground;
-
-    /* 
-    if (collisionState == PlayerState.ground)
-    {
-    
-        }
-        
-        */
 
     [Header("restrictions")]
     public float maxMoveSpeed;
@@ -46,9 +41,8 @@ public class PlayerMovement : MonoBehaviour
 
     //set what the player is coliding with for the purpouses of jumping and wallclimbing
     void GroundWallCheck()
-    {
-        RaycastHit2D downHit = Physics2D.Raycast(this.gameObject.transform.position, -Vector2.up, 1f); // this shit dont work
-        if (downHit.collider.tag == "Untagged")
+    { 
+        
         {
             collisionState = PlayerCollisionState.ground;
             Debug.Log(collisionState);
