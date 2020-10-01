@@ -8,8 +8,8 @@ public class ChunkManagerScript : MonoBehaviour
     [SerializeField] GameObject chunkParent;
     [SerializeField] GameObject currentChunk;
     public GameObject LoadedChunk;
-    GameObject chunkToLoad;
-    GameObject previousChunk;
+    [SerializeField] GameObject chunkToLoad;
+    [SerializeField] GameObject previousChunk;
     int distanceFromStart = 0;
     public ChunkScript chunkScript;
     public GameObject player;
@@ -24,11 +24,11 @@ public class ChunkManagerScript : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            LoadChunk();
-            DeloadChunk();
-        }
+        //if (Input.GetKeyDown(KeyCode.Space))
+       // {
+       //     LoadChunk();
+       //     DeloadChunk();
+      //  }
         
     }
 
