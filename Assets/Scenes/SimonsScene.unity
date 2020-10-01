@@ -558,7 +558,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxDistance: 10000
-  dashSpeed: 112
+  dashSpeed: 10
 --- !u!61 &1607000671
 BoxCollider2D:
   m_ObjectHideFlags: 0

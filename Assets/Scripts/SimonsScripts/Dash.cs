@@ -6,11 +6,13 @@ public class Dash : MonoBehaviour
 {
     private Camera cam;
 
-    Vector2 playerPosition;
-    Vector2 dashPoint;
+    Vector3 playerPosition;
+    
     Rigidbody2D rBody;
     public float maxDistance;
     public float dashSpeed;
+    Vector3 dashDirection;
+    Vector3 screenPos;
     void Start()
     {
         cam = Camera.main;
@@ -27,34 +29,23 @@ public class Dash : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
+            var targetPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            targetPos.z = transform.position.z;
+            transform.position = Vector3.MoveTowards(transform.position, targetPos, dashSpeed * Time.deltaTime);
 
-            Vector2 desiredDirection = dashPoint; // set this to the direction you want.
-            Vector2 dashDirection = desiredDirection.normalized * rBody.velocity.magnitude;
-
-            rBody.velocity = dashDirection;
         }
     }
     void GetDashPoint()
     {
 
-        Vector3 mousePos = Input.mousePosition;
-
-        Vector2 dashPoint = new Vector2();
-        mousePos.z = 10;
         
-        // compute where the mouse is in world space
-        
-        dashPoint = cam.ScreenToWorldPoint(mousePos);
 
         
 
     }
 
     
-    private void FixedUpdate()
-    {
-        
-    }
+    
 }
 
 
