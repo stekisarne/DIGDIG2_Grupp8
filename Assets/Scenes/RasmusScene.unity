@@ -256,15 +256,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chunks:
   - {fileID: 386816433433165000, guid: 21e563176f3b4d54c93a8a521f9a500d, type: 3}
-  - {fileID: 386816433433165000, guid: ad7609e5dc75d434b8bc3bd7a895752e, type: 3}
-  - {fileID: 386816433433165000, guid: a38e6f9d5aedc4643b43a79639fccc76, type: 3}
-  - {fileID: 386816433433165000, guid: 8ef9996ee40f092498038ecfb977d3bb, type: 3}
-  - {fileID: 386816433433165000, guid: 53a0e7997810ad342ab8b5e4d193f94c, type: 3}
-  - {fileID: 386816433433165000, guid: ed8caae5441cb574fb9793b563b3c6c9, type: 3}
-  - {fileID: 386816433433165000, guid: 95fd6bd432f1856488988e3e12a16c2f, type: 3}
+  - {fileID: 730911709668876971, guid: 3f5d4005c9da51c419699ded2d309a9c, type: 3}
+  - {fileID: 89967560112907336, guid: 5993b39e2ef683542bc02cbcdcd71745, type: 3}
   chunkParent: {fileID: 1690029747}
   currentChunk: {fileID: 771385155}
   LoadedChunk: {fileID: 398095036}
+  chunkToLoad: {fileID: 0}
+  previousChunk: {fileID: 0}
   chunkScript: {fileID: 0}
   player: {fileID: 0}
   chunkSize: 20
