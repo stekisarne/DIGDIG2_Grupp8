@@ -22,13 +22,13 @@ public class EnemyMovement : MonoBehaviour
 
         if (movingRight == false)
         {
-            rBody.velocity = new Vector2(-enemySpeed, 0.0f);
+            rBody.velocity = new Vector2(-enemySpeed, 0.0f);    //Inverts the enemies speed.
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    private void OnTriggerExit2D(Collider2D other)  //Changes if the enemy is moving right or left
     {
-        if (movingRight == true) //Changes if the enemy is moving right or left
+        if (movingRight == true) 
         {
             movingRight = false;
         }

@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class EnemyAttack : MonoBehaviour
 {
-    public float enemyDamage; //Sets the enemy damage 
+    public int enemyDamage; //Sets the enemy damage 
+    PlayerHealth playerHealth;  //A connection with the player health script
 
-    public void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.tag == "Player")
-        {
-            //Player health - enemyDamage.
-            //Player takes X amount of damage.
-            //Needs conection with a player health script
-        }
+        //Have a collison enter that deals damage to a gameobject with a specific tag.
     }
 }
