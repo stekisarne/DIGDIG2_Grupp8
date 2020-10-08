@@ -4,18 +4,22 @@ using UnityEngine;
 
 public class Dash : MonoBehaviour
 {
-    private Camera cam;
+    
 
-    Vector3 playerPosition;
+    
     
     Rigidbody2D rBody;
+
     public float maxDistance;
     public float dashSpeed;
+    public float angle;
+
+    Vector3 playerPosition;
     Vector3 dashDirection;
     Vector3 screenPos;
     void Start()
     {
-        cam = Camera.main;
+        
         rBody = GetComponent<Rigidbody2D>();
         playerPosition = gameObject.transform.position;
     }
@@ -23,26 +27,20 @@ public class Dash : MonoBehaviour
 
     void Update()
     {
-        DashToMouse();
+        DashInDirection();
     }
-    void DashToMouse()
+    void DashInDirection()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKeyDown(KeyCode.LeftShift))
         {
-            var targetPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            targetPos.z = transform.position.z;
-            transform.position = Vector3.MoveTowards(transform.position, targetPos, dashSpeed * Time.deltaTime);
+            angle = Mathf.Atan2(Input.GetAxis("Vertical"), Input.GetAxis("Horizontal")) * Mathf.Rad2Deg;
 
+            dashDirection = new Vector2(angle, angle);
+
+            rBody.velocity = dashDirection * dashSpeed;
         }
     }
-    void GetDashPoint()
-    {
-
-        
-
-        
-
-    }
+    
 
     
     
