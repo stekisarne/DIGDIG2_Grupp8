@@ -37,14 +37,12 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(isFacingRight);
         if (walkCooldown == 0)
         {
             Walk();
         }
         else
-        {
-            
+        {            
             WalkCooldown();
         }
         if (collisionState == PlayerCollisionState.ground)
@@ -61,11 +59,16 @@ public class PlayerMovement : MonoBehaviour
     void GroundWallCheck()
     { 
         if(groundCheck.GetComponent<GroundTrigger>().isTriggerd == true)
-        { collisionState = PlayerCollisionState.ground;}
+        { collisionState = PlayerCollisionState.ground;
+            anim.SetBool("grounded",true);
+        }
         else if (wallCheck.GetComponent<GroundTrigger>().isTriggerd == true)
-        {collisionState = PlayerCollisionState.wall; }
+        {collisionState = PlayerCollisionState.wall;
+            anim.SetBool("grounded", false);
+        }
         else
-        {collisionState = PlayerCollisionState.none; }
+        {collisionState = PlayerCollisionState.none;
+            anim.SetBool("grounded",false);}
     }
 
    
@@ -103,6 +106,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetKeyDown("space"))
         {
+            anim.SetTrigger("jumping");
             rBody.velocity = new Vector2(rBody.velocity.x, jumpForce);
         }
     }
@@ -114,13 +118,11 @@ public class PlayerMovement : MonoBehaviour
             walkCooldown = 0.4f;
             if (isFacingRight == true)
             {
-                Debug.Log("right walljump");
                 transform.rotation = new Quaternion(0, 180, 0, 0);
                 rBody.velocity = new Vector2(-jumpForce / 2, jumpForce / 1.5f);
                 isFacingRight = false;
             }else if (!isFacingRight)
             {
-                Debug.Log("left walljump");
                 transform.rotation = new Quaternion(0, 0, 0, 0);
                 rBody.velocity = new Vector2(jumpForce / 2, jumpForce / 1.5f);
                 isFacingRight = true;

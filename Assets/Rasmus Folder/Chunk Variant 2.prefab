@@ -835,6 +835,10 @@ PrefabInstance:
       propertyPath: m_CompositePaths.m_Paths.Array.data[1].Array.data[18].y
       value: -2.00001
       objectReference: {fileID: 0}
+    - target: {fileID: 214037551960562174, guid: 21e563176f3b4d54c93a8a521f9a500d, type: 3}
+      propertyPath: m_GeometryType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 386816433433164998, guid: 21e563176f3b4d54c93a8a521f9a500d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1666,6 +1670,10 @@ PrefabInstance:
     - target: {fileID: 4868117155858887557, guid: 21e563176f3b4d54c93a8a521f9a500d, type: 3}
       propertyPath: m_LocalPosition.y
       value: -0.003
+      objectReference: {fileID: 0}
+    - target: {fileID: 8971835245563997958, guid: 21e563176f3b4d54c93a8a521f9a500d, type: 3}
+      propertyPath: m_GeometryType
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 21e563176f3b4d54c93a8a521f9a500d, type: 3}
