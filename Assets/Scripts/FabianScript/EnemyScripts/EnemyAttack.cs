@@ -9,7 +9,7 @@ public class EnemyAttack : MonoBehaviour
 
     void Start()
     {
-        playerHealth = FindObjectOfType<PlayerHealth>();
+        playerHealth = FindObjectOfType<PlayerHealth>();    //Finds the object with the PlayerHealth script. 
     }
 
     public void OnTriggerEnter2D(Collider2D other) //Deals damage too the player character.
