@@ -7,8 +7,17 @@ public class EnemyAttack : MonoBehaviour
     public int enemyDamage; //Sets the enemy damage 
     PlayerHealth playerHealth;  //A connection with the player health script
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    void Start()
     {
-        //Have a collison enter that deals damage to a gameobject with a specific tag.
+        playerHealth = FindObjectOfType<PlayerHealth>();    //Finds the object with the PlayerHealth script. 
+    }
+
+    public void OnTriggerEnter2D(Collider2D other) //Deals damage too the player character.
+    {
+        if(other.tag == "Player")
+        {
+            playerHealth.playerHp -= enemyDamage;
+            playerHealth.Death();
+        }
     }
 }
