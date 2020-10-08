@@ -116,13 +116,13 @@ public class PlayerMovement : MonoBehaviour
             {
                 Debug.Log("right walljump");
                 transform.rotation = new Quaternion(0, 180, 0, 0);
-                rBody.velocity = new Vector2(-jumpForce, jumpForce);
+                rBody.velocity = new Vector2(-jumpForce / 2, jumpForce / 1.5f);
                 isFacingRight = false;
             }else if (!isFacingRight)
             {
                 Debug.Log("left walljump");
                 transform.rotation = new Quaternion(0, 0, 0, 0);
-                rBody.velocity = new Vector2(jumpForce, jumpForce);
+                rBody.velocity = new Vector2(jumpForce / 2, jumpForce / 1.5f);
                 isFacingRight = true;
             }
         }
