@@ -5,16 +5,10 @@ using UnityEngine;
 public class PlayerHealth : MonoBehaviour
 {
     public int playerHp;    //A variabel for the player health points.
-    public int healthModifier;
 
     public void Awake()
     {
         playerHp = 100;
-    }
-
-    void Update()
-    {
-        Death();
     }
 
     public void Death()
@@ -22,10 +16,6 @@ public class PlayerHealth : MonoBehaviour
         if(playerHp <= 0)   //I the player characters health goes under or is equal too 0 it destroyes the game object.
         {
             Destroy(this.gameObject);
-        }
-        else    //is this is not true the it returns to the begining.
-        {
-            return;
         }
     }
 }
