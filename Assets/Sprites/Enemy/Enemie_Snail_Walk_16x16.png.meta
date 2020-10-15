@@ -14,6 +14,18 @@ TextureImporter:
   - first:
       213: 8700825979569746069
     second: Enemie_Snail_Walk_16x16_3
+  - first:
+      213: -6764367807811527296
+    second: Enemie_Snail_Walk_16x16_0
+  - first:
+      213: 4440841158178427105
+    second: Enemie_Snail_Walk_16x16_1
+  - first:
+      213: 6866767343899907768
+    second: Enemie_Snail_Walk_16x16_2
+  - first:
+      213: -6900023575165916022
+    second: Enemie_Snail_Walk_16x16_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
