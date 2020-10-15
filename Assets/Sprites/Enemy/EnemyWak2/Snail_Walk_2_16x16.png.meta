@@ -1,31 +1,7 @@
 fileFormatVersion: 2
-guid: c92aba5c0731fb24cb404ae6130df6d1
+guid: d065f34597af51c479b809f06af67a39
 TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: 7185349456395195635
-    second: Enemie_Snail_Walk_16x16_0
-  - first:
-      213: 4554631595516667783
-    second: Enemie_Snail_Walk_16x16_1
-  - first:
-      213: -1747939505327212968
-    second: Enemie_Snail_Walk_16x16_2
-  - first:
-      213: 8700825979569746069
-    second: Enemie_Snail_Walk_16x16_3
-  - first:
-      213: -6764367807811527296
-    second: Enemie_Snail_Walk_16x16_0
-  - first:
-      213: 4440841158178427105
-    second: Enemie_Snail_Walk_16x16_1
-  - first:
-      213: 6866767343899907768
-    second: Enemie_Snail_Walk_16x16_2
-  - first:
-      213: -6900023575165916022
-    second: Enemie_Snail_Walk_16x16_3
+  internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -65,7 +41,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -90,7 +66,7 @@ TextureImporter:
     maxTextureSize: 8192
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -102,7 +78,7 @@ TextureImporter:
     maxTextureSize: 8192
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -147,95 +123,11 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: Enemie_Snail_Walk_16x16_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 08d5e4561532022a0800000000000000
-      internalID: -6764367807811527296
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Enemie_Snail_Walk_16x16_1
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1e0d829318901ad30800000000000000
-      internalID: 4440841158178427105
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Enemie_Snail_Walk_16x16_2
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8b618608488ab4f50800000000000000
-      internalID: 6866767343899907768
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Enemie_Snail_Walk_16x16_3
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a8c2a64cd113e30a0800000000000000
-      internalID: -6900023575165916022
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 7c77098f4347afb428bc60499472af7a
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
