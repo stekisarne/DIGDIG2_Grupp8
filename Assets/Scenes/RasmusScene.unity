@@ -3874,7 +3874,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1899439128}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c88f5cead0c0b2a4eb05b5900433f8d1, type: 3}
   m_Name: 
@@ -4321,6 +4321,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1690029748}
     m_Modifications:
+    - target: {fileID: -928408147126445327, guid: 21e563176f3b4d54c93a8a521f9a500d, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 214037551960562174, guid: 21e563176f3b4d54c93a8a521f9a500d, type: 3}
       propertyPath: m_ColliderPaths.Array.data[0].m_ColliderPaths.Array.data[0].Array.size
       value: 14

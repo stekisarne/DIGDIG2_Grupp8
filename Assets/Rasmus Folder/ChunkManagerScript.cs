@@ -15,6 +15,7 @@ public class ChunkManagerScript : MonoBehaviour
     public GameObject player;
     [SerializeField] int chunkSize;
     int lastNumber;
+    public static int chunkNumber;
 
     void Start()
     {
@@ -60,6 +61,10 @@ public class ChunkManagerScript : MonoBehaviour
         chunkToLoad = chunks[i];
 
         LoadedChunk = Instantiate(chunkToLoad, transform.position + newPos, Quaternion.identity, chunkParent.transform);
+
+        chunkNumber++;
+
+        print("ChunkNumber: " + chunkNumber);
 
         chunkScript = LoadedChunk.GetComponent<ChunkScript>();
 

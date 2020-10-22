@@ -15,8 +15,8 @@ public class EaterScript : MonoBehaviour
 
         Vector3 arrowSize = new Vector3(distanceBetweenEaterAndPlayer, distanceBetweenEaterAndPlayer);
 
-        print("distance between: " + distanceBetweenEaterAndPlayer);
-        print(arrowSize);
+        //print("distance between: " + distanceBetweenEaterAndPlayer);
+       // print(arrowSize);
 
         Arrow.transform.localScale = arrowSize;
     }
