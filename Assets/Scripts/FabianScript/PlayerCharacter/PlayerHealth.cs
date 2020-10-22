@@ -5,10 +5,10 @@ using UnityEngine;
 public class PlayerHealth : MonoBehaviour
 {
     public int playerHp;    //A variabel for the player health points.
-    EnemyMovement enemyMovement;
-    Animator enemyAnimator;
+    EnemyMovement enemyMovement; //Adds connection to the Enemymovement
+    Animator enemyAnimator; //Adds a connection to the enemy animator
 
-    public void Awake() //Sets the players health to a set value
+    public void Awake() //Sets the players health to a set value before the game starts
     {
         playerHp = 100;
     }
