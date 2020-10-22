@@ -6,6 +6,7 @@ TagManager:
   tags:
   - ChunkHandler
   - Ground
+  - Chunk
   layers:
   - Default
   - TransparentFX

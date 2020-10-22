@@ -5,27 +5,28 @@ using UnityEngine;
 public class PlayerHealth : MonoBehaviour
 {
     public int playerHp;    //A variabel for the player health points.
-    public int healthModifier;
+    EnemyMovement enemyMovement;
+    Animator enemyAnimator;
 
-    public void Awake()
+    public void Awake() //Sets the players health to a set value
     {
         playerHp = 100;
     }
 
-    void Update()
+    void Start()
     {
-        Death();
+        enemyAnimator = FindObjectOfType<Animator>();
+        enemyMovement = FindObjectOfType<EnemyMovement>();
     }
 
     public void Death()
     {
         if(playerHp <= 0)   //I the player characters health goes under or is equal too 0 it destroyes the game object.
         {
+            enemyAnimator.SetBool("NearPlayer", false);
+            enemyAnimator.SetBool("PlayerIsDead", true);
+            enemyMovement.enemySpeed = 1.5f;
             Destroy(this.gameObject);
-        }
-        else    //is this is not true the it returns to the begining.
-        {
-            return;
         }
     }
 }

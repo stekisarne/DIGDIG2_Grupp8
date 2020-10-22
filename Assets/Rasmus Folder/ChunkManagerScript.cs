@@ -9,7 +9,7 @@ public class ChunkManagerScript : MonoBehaviour
     [SerializeField] GameObject currentChunk;
     public GameObject LoadedChunk;
     [SerializeField] GameObject chunkToLoad;
-    [SerializeField] GameObject previousChunk;
+    public GameObject previousChunk;
     int distanceFromStart = 0;
     public ChunkScript chunkScript;
     public GameObject player;
