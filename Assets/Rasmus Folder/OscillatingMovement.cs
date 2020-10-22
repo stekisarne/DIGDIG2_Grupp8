@@ -15,10 +15,13 @@ public class OscillatingMovement : MonoBehaviour
 
     void Update()
     {
-        while(Time.time > timeOffset)
+
+        if (Time.time > timeOffset)
         {
-            oscPos.y = Mathf.PingPong(Time.time * oscSpeed, oscLength) - oscLength / 2;
+            oscPos.y = Mathf.Sin(Time.time * oscSpeed) * oscLength;
             transform.position = oscPos;
+
         }
+
     }
 }
