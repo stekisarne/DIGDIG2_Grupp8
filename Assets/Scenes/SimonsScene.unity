@@ -325,11 +325,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flyingRBody: {fileID: 597120327}
   player: {fileID: 2116721731}
-  flyingEnemySpeed: 0
+  flyingEnemySpeed: 3
   patrolLength: 6
   detectionRange: 10
+  patrolDistance: 5
   smoothTime: 10
   chasing: 0
+  maxDistanceReached: 0
+  chasingDone: 0
 --- !u!61 &597120326
 BoxCollider2D:
   m_ObjectHideFlags: 0
