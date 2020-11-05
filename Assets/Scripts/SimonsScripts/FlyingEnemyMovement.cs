@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,57 +9,51 @@ public class FlyingEnemyMovement : MonoBehaviour
     public Transform player;
 
     public float flyingEnemySpeed;
-    public float patrolLength;
     public float detectionRange;
     public float patrolDistance;
-    public float smoothTime;
 
-    
-
-    public bool chasing;
     public bool maxDistanceReached;
-    public bool chasingDone;
 
-    Vector2 patrolPos;
-    private Vector2 smoothVelocity = Vector2.zero;
+    Vector3 patrolPos;
+
+    private enum State { Patrolling, Chasing, Returning }
+    State currentState;
 
     void Start()
     {
         patrolPos = transform.position;
-        chasing = false;
+        
         maxDistanceReached = false;
+
         flyingRBody = GetComponent<Rigidbody2D>();
-        StartCoroutine("ChangePatrolPos");
+
+        currentState = State.Patrolling;
+        
     }
 
 
-    void Update()
-    {
 
-    }
-
-    private void FixedUpdate()
+    private void Update()
     {
+        FlyingEnemyPatrol();
         FlyingEnemyMove();
+        ReturnToPatrol();
     }
 
     void FlyingEnemyPatrol()
     {
         float distanceFromPPos = Vector2.Distance(transform.position, patrolPos);
 
-        if (chasing == false && maxDistanceReached == false)
+        if (currentState == State.Patrolling && maxDistanceReached == false)
         {
             flyingRBody.velocity = new Vector2(1f * flyingEnemySpeed, 0f);
 
             if (distanceFromPPos > patrolDistance)
             {
-
                 maxDistanceReached = true;
-                
-
             }
         }
-        else if(chasing == false && maxDistanceReached == true)
+        else if(currentState == State.Patrolling && maxDistanceReached == true)
         {
             flyingRBody.velocity = new Vector2(-1f * flyingEnemySpeed, 0f);
 
@@ -67,7 +62,6 @@ public class FlyingEnemyMovement : MonoBehaviour
                 maxDistanceReached = false;
             }
         }
-        
     }
 
     void FlyingEnemyMove()
@@ -78,26 +72,29 @@ public class FlyingEnemyMovement : MonoBehaviour
 
         if (distance < detectionRange)
         {
-            chasing = true;
-
-            flyingRBody.MovePosition(flyingRBody.transform.position + dir * flyingEnemySpeed * Time.fixedDeltaTime);
-
-            
-            
-            
-            
+            currentState = State.Chasing;
         }
-        else
-        {
 
-            chasing = false;
-            FlyingEnemyPatrol();
+        if (currentState == State.Chasing && distance < detectionRange)
+        {
+            flyingRBody.MovePosition(flyingRBody.transform.position + dir * flyingEnemySpeed * Time.deltaTime);
+        }
+        else if(currentState == State.Chasing && distance > detectionRange)
+        {
+            currentState = State.Returning;
         }
 
     }
-    IEnumerator ChangePatrolPos()
+
+    private void ReturnToPatrol()
     {
-        patrolPos = flyingRBody.transform.position;
-        yield return null;
+        if(currentState == State.Returning && flyingRBody.transform.position != patrolPos)
+        {
+            flyingRBody.transform.position = Vector3.MoveTowards(transform.position, patrolPos, flyingEnemySpeed * Time.deltaTime);
+        }
+        else if (currentState == State.Returning && flyingRBody.transform.position == patrolPos)
+        {
+            currentState = State.Patrolling;
+        }
     }
 }
