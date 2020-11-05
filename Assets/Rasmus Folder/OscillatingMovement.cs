@@ -8,20 +8,16 @@ public class OscillatingMovement : MonoBehaviour
     [SerializeField] float oscSpeed;
     [SerializeField] float oscLength;
     [SerializeField] float timeOffset;
+    Vector3 startPos;
     void Start()
     {
-        oscPos = gameObject.transform.position;
+        startPos = transform.position;
+        oscPos.y = gameObject.transform.position.y;
     }
 
     void Update()
     {
-
-        if (Time.time > timeOffset)
-        {
-            oscPos.y = Mathf.Sin(Time.time * oscSpeed) * oscLength;
-            transform.position = oscPos;
-
-        }
-
+        oscPos.y = Mathf.Sin(Time.time + timeOffset * oscSpeed) * oscLength;
+        transform.position = startPos + oscPos;
     }
 }
