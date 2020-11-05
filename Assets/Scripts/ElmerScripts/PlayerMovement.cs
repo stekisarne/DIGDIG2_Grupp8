@@ -104,7 +104,7 @@ public class PlayerMovement : MonoBehaviour
     // jump and potential jump resets
     public void Jump()
     {
-        if (Input.GetKeyDown("space"))
+        if (Input.GetButtonDown("Jump"))
         {
             anim.SetTrigger("jumping");
             rBody.velocity = new Vector2(rBody.velocity.x, jumpForce);
@@ -113,7 +113,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void WallJump()
     {
-        if (Input.GetKeyDown("space"))
+        if (Input.GetButtonDown("Jump"))
         {
             walkCooldown = 0.4f;
             if (isFacingRight == true)
