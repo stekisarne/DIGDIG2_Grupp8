@@ -326,13 +326,12 @@ MonoBehaviour:
   flyingRBody: {fileID: 597120327}
   player: {fileID: 2116721731}
   flyingEnemySpeed: 3
-  patrolLength: 6
+  chasingSpeed: 5
   detectionRange: 10
   patrolDistance: 5
-  smoothTime: 10
-  chasing: 0
+  returnTime: 1
+  maxSpeed: 100000
   maxDistanceReached: 0
-  chasingDone: 0
 --- !u!61 &597120326
 BoxCollider2D:
   m_ObjectHideFlags: 0

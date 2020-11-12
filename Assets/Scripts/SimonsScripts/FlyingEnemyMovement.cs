@@ -9,14 +9,18 @@ public class FlyingEnemyMovement : MonoBehaviour
     public Transform player;
 
     public float flyingEnemySpeed;
+    public float chasingSpeed;
     public float detectionRange;
     public float patrolDistance;
+    public float returnTime;
+    public float maxSpeed;
 
     public bool maxDistanceReached;
 
     Vector3 patrolPos;
+    
 
-    private enum State { Patrolling, Chasing, Returning }
+    private enum State { Patrolling, Chasing, Idle }
     State currentState;
 
     void Start()
@@ -40,10 +44,12 @@ public class FlyingEnemyMovement : MonoBehaviour
         ReturnToPatrol();
     }
 
+    
+
     void FlyingEnemyPatrol()
     {
         float distanceFromPPos = Vector2.Distance(transform.position, patrolPos);
-
+        
         if (currentState == State.Patrolling && maxDistanceReached == false)
         {
             flyingRBody.velocity = new Vector2(1f * flyingEnemySpeed, 0f);
@@ -70,31 +76,32 @@ public class FlyingEnemyMovement : MonoBehaviour
 
         Vector3 dir = (player.transform.position - flyingRBody.transform.position).normalized;
 
-        if (distance < detectionRange)
+        if (currentState == State.Idle && distance < detectionRange || currentState == State.Patrolling && distance < detectionRange)
         {
+            flyingRBody.velocity = Vector2.zero;
             currentState = State.Chasing;
+            Debug.Log("pat");
         }
 
         if (currentState == State.Chasing && distance < detectionRange)
         {
-            flyingRBody.MovePosition(flyingRBody.transform.position + dir * flyingEnemySpeed * Time.deltaTime);
+            flyingRBody.MovePosition(flyingRBody.transform.position + dir * chasingSpeed * Time.deltaTime);
+        }
+        else if (currentState == State.Patrolling)
+        {
+            return;
         }
         else if(currentState == State.Chasing && distance > detectionRange)
         {
-            currentState = State.Returning;
+            currentState = State.Idle;
         }
 
     }
 
     private void ReturnToPatrol()
     {
-        if(currentState == State.Returning && flyingRBody.transform.position != patrolPos)
-        {
-            flyingRBody.transform.position = Vector3.MoveTowards(transform.position, patrolPos, flyingEnemySpeed * Time.deltaTime);
-        }
-        else if (currentState == State.Returning && flyingRBody.transform.position == patrolPos)
-        {
-            currentState = State.Patrolling;
-        }
+        
+
+       
     }
 }
