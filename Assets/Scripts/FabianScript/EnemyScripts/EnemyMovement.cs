@@ -40,4 +40,12 @@ public class EnemyMovement : MonoBehaviour
         transform.Rotate(0.0f, -180f, 0.0f);
 
     }
+
+    /*private void OnTriggerEnter2D(Collider2D Other)
+    {
+        if(Other.tag == "Ground")
+        {
+            transform.Rotate(0.0f, -180f, 0.0f);
+        }
+    }*/
 }
