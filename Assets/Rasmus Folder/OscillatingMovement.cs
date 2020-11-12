@@ -5,8 +5,8 @@ using UnityEngine;
 public class OscillatingMovement : MonoBehaviour
 {
     Vector3 oscPos; // oscillating value. Don't touch
-    [SerializeField] float oscSpeed; // Speed of oscillating movement
-    [SerializeField] float oscLength; // Amplitude of sine wave
+    [SerializeField] float oscSpeed; // frequency of sine wave
+    [SerializeField] float oscLength; // Amplitude and movement speed of sine wave
     [SerializeField] float timeOffset; // changes phase or start point of sine wave
     Vector3 startPos;
     enum Vectors {x, y } // Direction of oscillating movement

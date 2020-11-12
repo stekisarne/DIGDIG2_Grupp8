@@ -7,6 +7,7 @@ TagManager:
   - ChunkHandler
   - Ground
   - Chunk
+  - Walls
   layers:
   - Default
   - TransparentFX
