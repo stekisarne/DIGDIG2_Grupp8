@@ -14,11 +14,11 @@ public class ChunkScript : MonoBehaviour
     
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.tag == "Player" && collision == col)
+        if (collision.tag == "Player" && collision == col) // If trigger is Player and main Player BoxCollider2D
         {
             print("triggerd collision");
-            chunkManagerScript.LoadChunk();
-            Physics2D.IgnoreCollision(collision, GetComponent<Collider2D>());
+            chunkManagerScript.LoadChunk(); // Loads new chunk
+            Physics2D.IgnoreCollision(collision, GetComponent<Collider2D>()); // Ignores every collision after first one
         }
     }
 }

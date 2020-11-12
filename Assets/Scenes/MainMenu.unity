@@ -3447,6 +3447,7 @@ MonoBehaviour:
   oscSpeed: 1
   oscLength: 1.5
   timeOffset: 0
+  oscVector: 1
 --- !u!212 &763237625
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3923,6 +3924,7 @@ MonoBehaviour:
   oscSpeed: 1
   oscLength: 1.5
   timeOffset: 0.6
+  oscVector: 1
 --- !u!1 &891276095
 GameObject:
   m_ObjectHideFlags: 0
@@ -4399,6 +4401,7 @@ MonoBehaviour:
   oscSpeed: 1
   oscLength: 1.5
   timeOffset: 0.9
+  oscVector: 1
 --- !u!212 &1346594332
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4568,6 +4571,7 @@ MonoBehaviour:
   oscSpeed: 1
   oscLength: 1.5
   timeOffset: 0.3
+  oscVector: 1
 --- !u!212 &1389664058
 SpriteRenderer:
   m_ObjectHideFlags: 0

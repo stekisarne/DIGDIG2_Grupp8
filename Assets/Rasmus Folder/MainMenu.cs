@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public int sceneIndex;
+    public int sceneIndex; //Scene number in build settings
 
     void Start()
     {
@@ -17,15 +17,10 @@ public class MainMenu : MonoBehaviour
 
     }
 
-    public void ChangeScene()
+    public void ChangeScene() //changes scene to sceneIndex
     {
         //SceneManager.LoadScene(sceneIndex);
         print("Changed scene");
-    }
-
-    public void MoveCam()
-    {
-
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
