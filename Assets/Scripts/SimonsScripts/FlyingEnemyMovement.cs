@@ -41,7 +41,7 @@ public class FlyingEnemyMovement : MonoBehaviour
     {
         FlyingEnemyPatrol();
         FlyingEnemyMove();
-        ReturnToPatrol();
+        
     }
 
     
@@ -80,7 +80,6 @@ public class FlyingEnemyMovement : MonoBehaviour
         {
             flyingRBody.velocity = Vector2.zero;
             currentState = State.Chasing;
-            Debug.Log("pat");
         }
 
         if (currentState == State.Chasing && distance < detectionRange)
@@ -98,10 +97,5 @@ public class FlyingEnemyMovement : MonoBehaviour
 
     }
 
-    private void ReturnToPatrol()
-    {
-        
-
-       
-    }
+    
 }
