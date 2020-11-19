@@ -1878,7 +1878,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   whatToSpawn: {fileID: 8411125351380686187, guid: 72c71e0e812677140985208c68b2e5a1, type: 3}
-  chanceToSpawn: 50
+  chanceToSpawn: 100
 --- !u!1 &8101307447896661835
 GameObject:
   m_ObjectHideFlags: 0
@@ -2629,7 +2629,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5895125912447885178, guid: 088fd9899e26dfd48aa40c834989e5b1, type: 3}
       propertyPath: m_InstanceId
-      value: -16252
+      value: -38564
       objectReference: {fileID: 0}
     - target: {fileID: 5895125912447885183, guid: 088fd9899e26dfd48aa40c834989e5b1, type: 3}
       propertyPath: m_LocalPosition.x
