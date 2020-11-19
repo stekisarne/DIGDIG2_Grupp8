@@ -15,7 +15,7 @@ public class PlayerMovement : MonoBehaviour
 
     public bool isFacingRight = true;
 
-    float walkCooldown;
+    float CurrentWalkCooldown;
 
     [Header("restrictions")]
     public float maxMoveSpeed;
@@ -24,10 +24,13 @@ public class PlayerMovement : MonoBehaviour
     [Header("stats")]
     public float moveSpeed;
     public float jumpForce;
+    public float fallMultiplier = 2.5f;
+    public float lowJumpMultiplier = 2f;
+    public float walkCooldown;
 
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         isFacingRight = true;
         rBody = GetComponent<Rigidbody2D>();
@@ -37,7 +40,8 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (walkCooldown == 0)
+        GravityAdjuster();
+        if (CurrentWalkCooldown == 0)
         {
             Walk();
         }
@@ -98,7 +102,7 @@ public class PlayerMovement : MonoBehaviour
 
     void WalkCooldown()
     {
-        walkCooldown = Mathf.Max(walkCooldown - Time.deltaTime, 0);
+        CurrentWalkCooldown = Mathf.Max(CurrentWalkCooldown - Time.deltaTime, 0);
     }
 
     // jump and potential jump resets
@@ -107,7 +111,7 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetButtonDown("Jump"))
         {
             anim.SetTrigger("jumping");
-            rBody.velocity = new Vector2(rBody.velocity.x, jumpForce);
+            rBody.velocity = Vector2.up * jumpForce;
         }
     }
 
@@ -115,7 +119,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetButtonDown("Jump"))
         {
-            walkCooldown = 0.4f;
+            CurrentWalkCooldown = walkCooldown;
             if (isFacingRight == true)
             {
                 transform.rotation = new Quaternion(0, 180, 0, 0);
@@ -127,6 +131,17 @@ public class PlayerMovement : MonoBehaviour
                 rBody.velocity = new Vector2(jumpForce / 2, jumpForce / 1.5f);
                 isFacingRight = true;
             }
+        }
+    }
+
+    void GravityAdjuster()
+    {
+        if (rBody.velocity.y < 0)
+        {
+            rBody.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+        } else if(rBody.velocity.y > 0 && !Input.GetButton("Jump"))
+        {
+            rBody.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
         }
     }
 }
