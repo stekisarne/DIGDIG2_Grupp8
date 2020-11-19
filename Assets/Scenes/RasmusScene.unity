@@ -1732,6 +1732,10 @@ PrefabInstance:
       propertyPath: m_InstanceId
       value: -1232
       objectReference: {fileID: 0}
+    - target: {fileID: 5904403255707072838, guid: 21e563176f3b4d54c93a8a521f9a500d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8971835245563997958, guid: 21e563176f3b4d54c93a8a521f9a500d, type: 3}
       propertyPath: m_ColliderPaths.Array.data[0].m_ColliderPaths.Array.data[0].Array.size
       value: 4
@@ -5174,6 +5178,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingMoney: 0
   currentMoney: 10
+  items:
+  - itemName: 
+    itemCount: 0
+    itemSprite: {fileID: 0}
+  - itemName: 
+    itemCount: 0
+    itemSprite: {fileID: 0}
+  - itemName: 
+    itemCount: 0
+    itemSprite: {fileID: 0}
+  - itemName: 
+    itemCount: 0
+    itemSprite: {fileID: 0}
 --- !u!1001 &7296291837120254678
 PrefabInstance:
   m_ObjectHideFlags: 0

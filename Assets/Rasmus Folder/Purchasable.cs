@@ -8,6 +8,7 @@ public class Purchasable : MonoBehaviour
     [SerializeField] GameObject textObject;
     [SerializeField] TextMeshPro tmp;
     InventorySystem invSys = null;
+    public int[] dropTable;
     [SerializeField] string cantAffordText;
     [SerializeField] string affordText;
     [SerializeField] int price = 10;
@@ -24,7 +25,7 @@ public class Purchasable : MonoBehaviour
     {
         if(withinReach && canAfford && Input.GetKeyDown(KeyCode.E))
         {
-
+            buy();
         }
     }
     private void OnTriggerStay2D(Collider2D collision)
@@ -59,5 +60,13 @@ public class Purchasable : MonoBehaviour
             canAfford = true;
             tmp.text = affordText;
         }
+    }
+
+    public void buy()
+    {
+        int i;
+        i = Random.Range(0, 4);
+        invSys.AddItem(dropTable[i]);
+        print("chest bought" + i);
     }
 }
