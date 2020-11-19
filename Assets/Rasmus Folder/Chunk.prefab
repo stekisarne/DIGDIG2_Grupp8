@@ -33,6 +33,7 @@ Transform:
   m_Children:
   - {fileID: 8158248509127181567}
   - {fileID: 3539882839548121696}
+  - {fileID: 5904403255707072838}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1833,6 +1834,51 @@ CompositeCollider2D:
       - {x: 8.000026, y: -10.00001}
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0.00005
+--- !u!1 &5907083645470198307
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5904403255707072838}
+  - component: {fileID: 921410815948915584}
+  m_Layer: 0
+  m_Name: ItemChestSpawnLocation
+  m_TagString: Untagged
+  m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5904403255707072838
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5907083645470198307}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.595, y: 0.062, z: -14.128017}
+  m_LocalScale: {x: 0.1, y: 0.05, z: 1}
+  m_Children: []
+  m_Father: {fileID: 386816433433164998}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &921410815948915584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5907083645470198307}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2acd570e04eda44fa894246996920ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  whatToSpawn: {fileID: 8411125351380686187, guid: 72c71e0e812677140985208c68b2e5a1, type: 3}
+  chanceToSpawn: 50
 --- !u!1 &8101307447896661835
 GameObject:
   m_ObjectHideFlags: 0
@@ -2583,7 +2629,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5895125912447885178, guid: 088fd9899e26dfd48aa40c834989e5b1, type: 3}
       propertyPath: m_InstanceId
-      value: -60646
+      value: -16252
       objectReference: {fileID: 0}
     - target: {fileID: 5895125912447885183, guid: 088fd9899e26dfd48aa40c834989e5b1, type: 3}
       propertyPath: m_LocalPosition.x
