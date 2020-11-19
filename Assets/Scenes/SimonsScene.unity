@@ -304,6 +304,8 @@ GameObject:
   - component: {fileID: 597120327}
   - component: {fileID: 597120326}
   - component: {fileID: 597120325}
+  - component: {fileID: 597120331}
+  - component: {fileID: 597120330}
   m_Layer: 0
   m_Name: FlyingEnemy
   m_TagString: Untagged
@@ -325,8 +327,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flyingRBody: {fileID: 597120327}
   player: {fileID: 2116721731}
-  flyingEnemySpeed: 3
-  chasingSpeed: 5
+  flyingEnemySpeed: 5
+  chasingSpeed: 15
   detectionRange: 10
   patrolDistance: 5
   returnTime: 1
@@ -419,7 +421,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 6453a355c33fa134bbbfd76bbd961cae, type: 3}
+  m_Sprite: {fileID: 5983291479178214126, guid: 931dacb0e6457a749883a5504a1a3fa5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -444,6 +446,38 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &597120330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 597120324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4bf4ce91f81d434aac6c54b01828f48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flyingEnemyDamage: 0
+--- !u!95 &597120331
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 597120324}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1144728084
 GameObject:
   m_ObjectHideFlags: 0
@@ -667,6 +701,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7011a15b41c6822498e24d653430b89f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxDistance: 10
+  hurtbox: {fileID: 0}
+  dashCD: 3
+  dashDuration: 0
   dashSpeed: 3
-  angle: 0
