@@ -68,5 +68,6 @@ public class Purchasable : MonoBehaviour
         i = Random.Range(0, 4);
         invSys.AddItem(dropTable[i]);
         print("chest bought" + i);
+        Destroy(gameObject);
     }
 }
