@@ -15,7 +15,7 @@ public class PlayerMovement : MonoBehaviour
 
     public bool isFacingRight = true;
 
-    float CurrentWalkCooldown;
+    public float currentWalkCooldown;
 
     [Header("restrictions")]
     public float maxMoveSpeed;
@@ -41,7 +41,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         GravityAdjuster();
-        if (CurrentWalkCooldown == 0)
+        if (currentWalkCooldown == 0)
         {
             Walk();
         }
@@ -82,7 +82,7 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetAxis("Horizontal") != 0)
         {
             anim.SetBool("walking", true);
-            rBody.velocity = new Vector2 (Input.GetAxis("Horizontal") * moveSpeed, rBody.velocity.y);
+            rBody.velocity =  Vector3.MoveTowards(rBody.velocity, new Vector3 (Input.GetAxis("Horizontal") * moveSpeed, rBody.velocity.y,0),0.5f);
             if (Input.GetAxis("Horizontal") >= 0)
             {
                 isFacingRight = true;
@@ -100,9 +100,9 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void WalkCooldown()
+   void WalkCooldown()
     {
-        CurrentWalkCooldown = Mathf.Max(CurrentWalkCooldown - Time.deltaTime, 0);
+        currentWalkCooldown = Mathf.Max(currentWalkCooldown - Time.deltaTime, 0);
     }
 
     // jump and potential jump resets
@@ -119,7 +119,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetButtonDown("Jump"))
         {
-            CurrentWalkCooldown = walkCooldown;
+            currentWalkCooldown = walkCooldown;
             if (isFacingRight == true)
             {
                 transform.rotation = new Quaternion(0, 180, 0, 0);
