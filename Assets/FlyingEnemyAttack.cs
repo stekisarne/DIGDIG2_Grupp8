@@ -28,15 +28,17 @@ public class FlyingEnemyAttack : MonoBehaviour
     {
         if(other.tag == "Player")
         {
-            
-            
-
-            if (cooldownTimer <= 0)
-            {
-                playerHealth.playerHp -= flyingEnemyDamage;
-                cooldownTimer = cooldown;
-            }
+            Invoke("DamagePlayer", 1);
         }
-        
+
+    }
+
+    private void DamagePlayer()
+    {
+        if (cooldownTimer <= 0)
+        {
+            playerHealth.playerHp -= flyingEnemyDamage;
+            cooldownTimer = cooldown;
+        }
     }
 }

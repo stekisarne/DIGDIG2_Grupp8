@@ -187,8 +187,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4bf4ce91f81d434aac6c54b01828f48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flyingEnemyDamage: 0
-  cooldown: 0
+  flyingEnemyDamage: 20
+  cooldown: 2
   cooldownTimer: 0
 --- !u!114 &7716432107608280219
 MonoBehaviour:
