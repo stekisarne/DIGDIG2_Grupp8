@@ -33,7 +33,7 @@ public class EnemyAttack : MonoBehaviour
             enemyAnimator.SetBool("NearPlayer", true);
             enemyMovement.enemySpeed = 0;
         }
-        else
+        else if(other.tag != "Player")
         {
             enemyAnimator.SetBool("NearPlayer", false);
             enemyMovement.enemySpeed = 1.5f;
