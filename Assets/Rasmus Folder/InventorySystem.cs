@@ -59,7 +59,7 @@ public class Items // simple class to store item variables
     public string itemName;
     public int itemCount;
     public Sprite itemSprite;
-    public TextMeshProUGUI tmpro; // text to change depending ón itemCount
+    public TextMeshProUGUI tmpro; // text to change depending on itemCount
 
     public void UpdateItems()
     {

@@ -268,7 +268,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textObject: {fileID: 5495708827529114705}
   tmp: {fileID: 4422508271542185694}
-  dropTable: 00000000010000000200000003000000
+  dropTable:
+  - {fileID: 359470233181721764, guid: 2fc4b5ee43f1cae49baa1cfc479ac6b8, type: 3}
+  - {fileID: 359470233181721764, guid: 2fc4b5ee43f1cae49baa1cfc479ac6b8, type: 3}
+  - {fileID: 359470233181721764, guid: 2fc4b5ee43f1cae49baa1cfc479ac6b8, type: 3}
+  - {fileID: 359470233181721764, guid: 2fc4b5ee43f1cae49baa1cfc479ac6b8, type: 3}
   cantAffordText: Can't afford chest for 10 money
   affordText: Buy chest for 10 money
   price: 10

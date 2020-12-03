@@ -9,6 +9,7 @@ TagManager:
   - Chunk
   - Walls
   - Chest
+  - Item
   layers:
   - Default
   - TransparentFX
@@ -29,7 +30,7 @@ TagManager:
   - 
   - 
   - Purchasable
-  - 
+  - Item
   - 
   - 
   - 

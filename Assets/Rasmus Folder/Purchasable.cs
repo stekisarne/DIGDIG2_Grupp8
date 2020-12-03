@@ -8,12 +8,13 @@ public class Purchasable : MonoBehaviour
     [SerializeField] GameObject textObject;
     [SerializeField] TextMeshPro tmp;
     InventorySystem invSys = null;
-    public int[] dropTable;
+    public GameObject[] dropTable;
     [SerializeField] string cantAffordText;
     [SerializeField] string affordText;
     [SerializeField] int price = 10;
     bool canAfford = false;
     bool withinReach = false;
+    ItemScript itemScript = null;
 
     void Start()
     {
@@ -65,9 +66,20 @@ public class Purchasable : MonoBehaviour
     public void buy()
     {
         int i;
-        i = Random.Range(0, 4);
-        invSys.AddItem(dropTable[i]);
+        i = Random.Range(0, dropTable.Length);
         print("chest bought" + i);
+        SpawnItem(i);
         Destroy(gameObject);
+    }
+
+    public void SpawnItem(int i)
+    {
+        float x = Random.Range(-5, 5);
+        Rigidbody2D rbody;
+        GameObject item = Instantiate(dropTable[i], transform.position, Quaternion.identity);
+        itemScript = item.GetComponent<ItemScript>();
+        rbody = item.transform.GetComponent<Rigidbody2D>();
+        itemScript.itemIndex = i;
+        rbody.AddForce(new Vector2(x, 5), ForceMode2D.Impulse);
     }
 }
