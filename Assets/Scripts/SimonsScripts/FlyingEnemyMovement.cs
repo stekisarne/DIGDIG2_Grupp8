@@ -12,8 +12,8 @@ public class FlyingEnemyMovement : MonoBehaviour
     public float chasingSpeed;
     public float detectionRange;
     public float patrolDistance;
-    public float returnTime;
-    public float maxSpeed;
+    
+    
 
     public bool maxDistanceReached;
 
