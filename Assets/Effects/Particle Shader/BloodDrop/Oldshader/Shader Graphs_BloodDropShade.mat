@@ -18,7 +18,16 @@ Material:
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
-    m_TexEnvs: []
+    m_TexEnvs:
+    - _BloodDropTex:
+        m_Texture: {fileID: 2800000, guid: 02fdba2e7374517479df2a53708fcb89, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Emission:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Floats: []
-    m_Colors: []
+    m_Colors:
+    - Color_7BFC05DC: {r: 1, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
