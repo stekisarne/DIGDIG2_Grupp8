@@ -8,18 +8,58 @@ public class RasmusQuickCamera : MonoBehaviour
     public Transform followTransform; // transform to follow
     public int sceneIndex; // Current SceneIndex
     [SerializeField] float camYOffset; // Offset on y axis. Used only in main menu
+    public GameObject camParent;
 
 
-    // Update is called once per frame
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            StartCoroutine(CameraShake(2f, 0.3f, 0.5f, 0.5f));
+        }
+    }
     void FixedUpdate()
     {
-        if(sceneIndex == 0) // Scene = MainMenu follows player on y axis but adds offset
+        camParent.transform.position = new Vector3(camParent.transform.position.x, followTransform.position.y, camParent.transform.position.z);
+    }
+
+    IEnumerator CameraShake(float duration, float maxMagnitude, float attack, float decay)
+    {
+        float magnitude = 0f;
+        float hold = duration - attack - decay;
+
+        Vector3 originalPos = transform.localPosition;
+
+        float elapsed = 0.0f;
+
+        while (elapsed < duration)
         {
-            this.transform.position = new Vector3(this.transform.position.x, followTransform.position.y + camYOffset, this.transform.position.z);
+            if (elapsed < attack)
+            {
+                magnitude = Mathf.Lerp(0f, maxMagnitude, elapsed / attack);
+                print("magnitude" + magnitude);
+            }
+            else if (elapsed > hold + attack)
+            {
+                magnitude = Mathf.Lerp(maxMagnitude, 0f, (elapsed - attack - hold) / decay);
+                print("magnitude" + magnitude);
+            }
+
+            float x = Random.Range(-1f, 1f) * magnitude;
+            float y = Random.Range(-1f, 1f) * magnitude;
+
+            transform.localPosition = new Vector3(x, y, originalPos.z);
+
+            elapsed += Time.deltaTime;
+
+            yield return null;
         }
-        else // Scene != Main Menu follows player on y axis with no offset
-        {
-            this.transform.position = new Vector3(this.transform.position.x, followTransform.position.y, this.transform.position.z);
-        }
+
+        transform.localPosition = originalPos;
+    }
+
+    float lerp(float v0, float v1, float t)
+    {
+        return (1 - t) * v0 + t * v1;
     }
 }
