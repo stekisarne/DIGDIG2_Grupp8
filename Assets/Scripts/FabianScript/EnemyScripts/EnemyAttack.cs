@@ -9,6 +9,8 @@ public class EnemyAttack : MonoBehaviour
     PlayerHealth playerHealth;  //A connection with the player health script
     EnemyMovement enemyMovement;
     Animator enemyAnimator;
+    public ParticleSystem biteParticle;
+    public GameObject mouth; //A gameobject where the mouth of the enemy is
 
     void Start()
     {
@@ -43,5 +45,10 @@ public class EnemyAttack : MonoBehaviour
     public void BiteAttack() //Deals damage to the player when an animationen event triggers this function
     {
         playerHealth.playerHp -= enemyDamage;
+    }
+
+    public void BiteSplat() //A splat particle for when the enemy bites
+    {
+        Instantiate(biteParticle, transform.parent);
     }
 }
