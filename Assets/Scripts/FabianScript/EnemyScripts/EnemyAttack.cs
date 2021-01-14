@@ -47,8 +47,8 @@ public class EnemyAttack : MonoBehaviour
         playerHealth.playerHp -= enemyDamage;
     }
 
-    public void BiteSplat() //A splat particle for when the enemy bites
+    /*public void BiteSplat() //A splat particle for when the enemy bites
     {
         Instantiate(biteParticle, transform.parent);
-    }
+    }*/
 }
