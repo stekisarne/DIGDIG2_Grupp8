@@ -7,7 +7,7 @@ public class Dash : MonoBehaviour
     Rigidbody2D rBody;
     PlayerMovement playerMovement;
     public CircleCollider2D hurtbox;
-    private Animator anim;
+    private PlayerAnimationHandler anim;
 
     public float dashCD = 3;
     private float currentDashCD;
@@ -20,7 +20,7 @@ public class Dash : MonoBehaviour
     void Start()
     {
         rBody = GetComponent<Rigidbody2D>();
-        anim = GetComponent<Animator>();
+        anim = GetComponent<PlayerAnimationHandler>();
         playerMovement = GetComponent<PlayerMovement>();
     }
 
@@ -34,7 +34,7 @@ public class Dash : MonoBehaviour
         {
             playerMovement.enabled = true;
             hurtbox.enabled = true;
-            anim.SetBool("dash", false);
+            anim.dashing = false;
             currentDashCD = Mathf.Max(0, currentDashCD - Time.deltaTime);
         }
     }
@@ -67,7 +67,7 @@ public class Dash : MonoBehaviour
     {
         playerMovement.enabled = false;
         hurtbox.enabled = false;
-        anim.SetBool("dash", true);
+        anim.dashing = true;
         currentDashDuration = Mathf.Max(0, currentDashDuration - Time.deltaTime);
         rBody.velocity = dir.normalized * dashSpeed;    
     }

@@ -5,18 +5,25 @@ using UnityEngine;
 public class PlayerAttack : MonoBehaviour
 {
     private PlayerMovement movementScript;
+    PlayerAnimationHandler anim;
+    Animator swordAnim;
     private Rigidbody2D playerRB;
     private BoxCollider2D basicHB;
     float angle;
-    Vector2 knockbackAngle;
-    public float basicActiveTime;
+    float knockbackAngleX;
+    float knockbackAngleY;
+    bool isSlaming = false;
+    public float slamVelocity;
     public float basicCD;
-    float currentBasicActiveTime;
     float currentBasicCD;
+    private EnemyHealth target;
+    public float damage;
 
     // Start is called before the first frame update
     void Start()
     {
+        swordAnim = GetComponent<Animator>();
+        anim = GetComponentInParent<PlayerAnimationHandler>();
         playerRB = GetComponentInParent<Rigidbody2D>();
         movementScript = GetComponentInParent<PlayerMovement>();
         basicHB = GetComponent<BoxCollider2D>();
@@ -26,9 +33,27 @@ public class PlayerAttack : MonoBehaviour
     void Update()
     {
         BasicAttack();
-        if (Input.GetButtonDown("Fire2"))
+        if (Input.GetButtonDown("Fire2") && !movementScript.isGrounded && !isSlaming)
         {
-            movementScript.enabled = false;
+            isSlaming = true;
+            Debug.Log("Start Slam");
+            playerRB.velocity = new Vector2(0, -slamVelocity);
+        }
+        if (isSlaming)
+        {
+            Slaming();
+        }
+    }
+
+    private void Slaming()
+    {
+        movementScript.enabled = false;
+        playerRB.AddForce(new Vector2(0,-slamVelocity));
+        if(playerRB.velocity.y == 0)
+        {
+            Debug.Log("Stop Slam");
+            movementScript.enabled = true;
+            isSlaming = false;
         }
     }
 
@@ -36,37 +61,43 @@ public class PlayerAttack : MonoBehaviour
     {
         if (collision.tag == "Enemy")
         {
-            Debug.Log("hit");
+            target = collision.GetComponent<EnemyHealth>();
+
+            target.OnHit(damage);
         }
     }
 
     private void BasicAttack()
     {
-        currentBasicActiveTime = Mathf.Max(0, currentBasicActiveTime - Time.deltaTime);
         currentBasicCD = Mathf.Max(0, currentBasicCD - Time.deltaTime);
-        if (Input.GetButtonDown("Fire1") && currentBasicActiveTime == 0)
+        if (Input.GetButtonDown("Fire1"))
         {
             Debug.Log("swing");
             SwordRotation();
-            currentBasicCD = basicCD + basicActiveTime;
-            currentBasicActiveTime = basicActiveTime;
-        }
-        if (currentBasicActiveTime == 0)
-        {
-            basicHB.enabled = false;
-        }
-        else
-        {
-            basicHB.enabled = true;
-        }
-       
+            swordAnim.Play("sword swing");
+        }       
+    }
+    public void AttackStart()
+    {
+        Debug.Log("attack start");
+        basicHB.enabled = true;
+        anim.attacking = true;
+    }
+    public void AttackEnd()
+    {
+        Debug.Log("attack stop");
+        basicHB.enabled = false;
+        anim.attacking = false;
+        currentBasicCD = basicCD;
     }
 
     private void SwordRotation()
     {
         if (Input.GetAxis("Vertical") != 0)
         {
-            angle = Mathf.Atan2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")) * Mathf.Rad2Deg * -1 + 90;
+            knockbackAngleX = Input.GetAxis("Horizontal");
+            knockbackAngleY = Input.GetAxis("Vertical");
+            angle = Mathf.Atan2(knockbackAngleX, knockbackAngleY) * Mathf.Rad2Deg * -1 + 90;
         }
         else if (movementScript.isFacingRight)
         {
