@@ -451,7 +451,7 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!43 &1554471849
+--- !u!43 &1678366214
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5561,10 +5561,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1416974198, guid: cdb8fa78db07c0447811bec016bd96ff, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1479334972, guid: cdb8fa78db07c0447811bec016bd96ff, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+    - target: {fileID: 1936173656, guid: cdb8fa78db07c0447811bec016bd96ff, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8209819323253411602, guid: cdb8fa78db07c0447811bec016bd96ff, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.623415
@@ -5939,6 +5947,10 @@ PrefabInstance:
     - target: {fileID: 6938477518431702176, guid: 36e91cddbee14a8448f8b379ba83f9a7, type: 3}
       propertyPath: m_Name
       value: Wall light
+      objectReference: {fileID: 0}
+    - target: {fileID: 6938477518431702176, guid: 36e91cddbee14a8448f8b379ba83f9a7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 36e91cddbee14a8448f8b379ba83f9a7, type: 3}
@@ -6576,5 +6588,5 @@ MonoBehaviour:
   - {x: 28.83219, y: 0.5, z: 0}
   - {x: -28.83219, y: 0.5, z: 0}
   m_ShapePathHash: 0
-  m_Mesh: {fileID: 1554471849}
-  m_InstanceId: 16436
+  m_Mesh: {fileID: 1678366214}
+  m_InstanceId: 16446
