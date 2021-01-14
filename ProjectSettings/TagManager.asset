@@ -8,6 +8,7 @@ TagManager:
   - Ground
   - Chunk
   - Walls
+  - Turret
   layers:
   - Default
   - TransparentFX
