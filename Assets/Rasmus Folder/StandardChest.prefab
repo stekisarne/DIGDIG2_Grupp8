@@ -34,7 +34,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0.85}
+  m_AnchoredPosition: {x: 0.014, y: 0.877}
   m_SizeDelta: {x: 4.096496, y: 0.56638527}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &5914984375196825490
@@ -98,7 +98,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Example Text
+  m_text: SMASH OPEN FOR ITEM!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -125,8 +125,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 4
-  m_fontSizeBase: 4
+  m_fontSize: 2.44
+  m_fontSizeBase: 2.44
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -273,9 +273,6 @@ MonoBehaviour:
   - {fileID: 359470233181721764, guid: 2fc4b5ee43f1cae49baa1cfc479ac6b8, type: 3}
   - {fileID: 359470233181721764, guid: 2fc4b5ee43f1cae49baa1cfc479ac6b8, type: 3}
   - {fileID: 359470233181721764, guid: 2fc4b5ee43f1cae49baa1cfc479ac6b8, type: 3}
-  cantAffordText: Can't afford chest for 10 money
-  affordText: Buy chest for 10 money
-  price: 10
 --- !u!61 &7640236542040445624
 BoxCollider2D:
   m_ObjectHideFlags: 0

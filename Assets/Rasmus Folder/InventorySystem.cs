@@ -5,8 +5,6 @@ using TMPro;
 
 public class InventorySystem : MonoBehaviour
 {
-    public int startingMoney = 0;
-    public int currentMoney;
     public List<Items> items = new List<Items>(); //creates a new list based on the class Items
     public float arrowmulti; //example delete me
     public GameObject itemsMenu;

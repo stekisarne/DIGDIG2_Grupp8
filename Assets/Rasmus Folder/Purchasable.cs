@@ -9,9 +9,6 @@ public class Purchasable : MonoBehaviour
     [SerializeField] TextMeshPro tmp;
     InventorySystem invSys = null;
     public GameObject[] dropTable;
-    [SerializeField] string cantAffordText;
-    [SerializeField] string affordText;
-    [SerializeField] int price = 10;
     bool canAfford = false;
     bool withinReach = false;
     ItemScript itemScript = null;
@@ -24,7 +21,7 @@ public class Purchasable : MonoBehaviour
 
     void Update()
     {
-        if(withinReach && canAfford && Input.GetKeyDown(KeyCode.E))
+        if(withinReach && Input.GetButtonDown("Fire1"))
         {
             buy();
         }
@@ -49,18 +46,6 @@ public class Purchasable : MonoBehaviour
     void DisplayText()
     {
         textObject.SetActive(true);
-
-        if (invSys.currentMoney < price)
-        {
-            canAfford = false;
-            tmp.text = cantAffordText;
-        }
-
-        else if(invSys.currentMoney >= price)
-        {
-            canAfford = true;
-            tmp.text = affordText;
-        }
     }
 
     public void buy()
@@ -74,7 +59,7 @@ public class Purchasable : MonoBehaviour
 
     public void SpawnItem(int i)
     {
-        float x = Random.Range(-5, 5);
+        float x = Random.Range(-5, 5); //random force on x axis
         Rigidbody2D rbody;
         GameObject item = Instantiate(dropTable[i], transform.position, Quaternion.identity);
         itemScript = item.GetComponent<ItemScript>();
