@@ -7,7 +7,7 @@ public class RasmusQuickCamera : MonoBehaviour
 
     public Transform followTransform; // transform to follow
     public int sceneIndex; // Current SceneIndex
-    [SerializeField] float camYOffset; // Offset on y axis. Used only in main menu
+    public float camYOffset; // Offset on y axis. Used only in main menu
     public GameObject camParent;
 
 
@@ -56,10 +56,5 @@ public class RasmusQuickCamera : MonoBehaviour
         }
 
         transform.localPosition = originalPos;
-    }
-
-    float lerp(float v0, float v1, float t)
-    {
-        return (1 - t) * v0 + t * v1;
     }
 }
