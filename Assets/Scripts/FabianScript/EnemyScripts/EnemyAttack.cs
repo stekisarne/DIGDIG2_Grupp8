@@ -12,7 +12,7 @@ public class EnemyAttack : MonoBehaviour
     public ParticleSystem biteParticle;
     public GameObject mouth; //Gameobject where a bite particle Instantiates
     public AudioSource walkAudio;
-    public AudioSource attack;
+    public AudioSource attackAudio;
 
     void Start()
     {
@@ -51,6 +51,6 @@ public class EnemyAttack : MonoBehaviour
     {
         playerHealth.playerHp -= enemyDamage;
         Instantiate(biteParticle, mouth.transform);
-
+        attackAudio.Play();
     }
 }

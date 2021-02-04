@@ -8,6 +8,7 @@ public class EnemyMovement : MonoBehaviour
     public float enemySpeed; //Variabel for enemy speed
     public bool enemyGrounded; //A bool to check if the enemy is touching the ground
     public bool movingRight; //A bool to check if the enemy is moving tight or left
+    public GameObject WallDetector; //GameObject in place to see if its collider triggers with a wall collider
 
     void Start()
     {
@@ -40,12 +41,4 @@ public class EnemyMovement : MonoBehaviour
         transform.Rotate(0.0f, -180f, 0.0f);
 
     }
-
-    /*private void OnTriggerEnter2D(Collider2D Other)
-    {
-        if(Other.tag == "Ground")
-        {
-            transform.Rotate(0.0f, -180f, 0.0f);
-        }
-    }*/
 }
