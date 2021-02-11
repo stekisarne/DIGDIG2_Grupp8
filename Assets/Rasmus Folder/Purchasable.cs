@@ -12,6 +12,9 @@ public class Purchasable : MonoBehaviour
     bool canAfford = false;
     bool withinReach = false;
     ItemScript itemScript = null;
+    public Animator chestAnim;
+    public AudioSource sSource;
+    public AudioClip sClip;
 
     void Start()
     {
@@ -54,7 +57,8 @@ public class Purchasable : MonoBehaviour
         i = Random.Range(0, dropTable.Length);
         print("chest bought" + i);
         SpawnItem(i);
-        Destroy(gameObject);
+        chestAnim.SetBool("poped", true);
+        sSource.PlayOneShot(sClip);
     }
 
     public void SpawnItem(int i)
