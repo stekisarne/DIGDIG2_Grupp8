@@ -32,13 +32,12 @@ public class EnemyMovement : MonoBehaviour
         if (movingRight == true) 
         {
             movingRight = false;
+            transform.Rotate(0.0f, -180f, 0.0f);
         }
         else
         {
             movingRight = true;
+            transform.Rotate(0.0f, 180f, 0.0f);
         }
-
-        transform.Rotate(0.0f, -180f, 0.0f);
-
     }
 }
