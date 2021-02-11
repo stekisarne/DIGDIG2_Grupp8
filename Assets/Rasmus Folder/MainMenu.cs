@@ -5,7 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-
+    public GameObject infoMenu;
+    public GameObject buttons;
     void Start()
     {
 
@@ -16,5 +17,24 @@ public class MainMenu : MonoBehaviour
 
     }
 
+    public void Play()
+    {
+
+    }
+
+    public void Info()
+    {
+        
+    }
+
+    public void Back()
+    {
+
+    }
+
+    public void Exit()
+    {
+        Application.Quit();
+    }
 
 }
