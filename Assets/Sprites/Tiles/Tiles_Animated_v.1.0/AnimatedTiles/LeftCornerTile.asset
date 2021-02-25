@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b75c95f34a00d4e8c04f76b73312e6, type: 3}
+  m_Name: LeftCornerTile
+  m_EditorClassIdentifier: 
+  m_AnimatedSprites:
+  - {fileID: -3687153894675095246, guid: b9b3efa84ca45204086023beaca23887, type: 3}
+  - {fileID: -70505605004541300, guid: c61fb7159c7e9294397699867e0518df, type: 3}
+  - {fileID: 3560215566174085963, guid: bacd7c46b0471bc44931888e1b827096, type: 3}
+  - {fileID: 8235393270814383912, guid: feeeec1fd1c12d24c9d03eb7d436110c, type: 3}
+  - {fileID: 1348770818884481981, guid: 580f1d9a2836c4a42959076275b3b4be, type: 3}
+  - {fileID: 7132835829322624258, guid: a7ca1487296b2a0408f38c25c7365043, type: 3}
+  m_MinSpeed: 1
+  m_MaxSpeed: 1
+  m_AnimationStartTime: 0
+  m_AnimationStartFrame: 0
+  m_TileColliderType: 2
