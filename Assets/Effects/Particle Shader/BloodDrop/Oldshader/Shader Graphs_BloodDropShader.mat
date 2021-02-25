@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Shader Graphs_BloodDropShade
+  m_Name: Shader Graphs_BloodDropShader
   m_Shader: {fileID: -6465566751694194690, guid: 5d895340c1227f347b3d4ee189b94fe0, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
