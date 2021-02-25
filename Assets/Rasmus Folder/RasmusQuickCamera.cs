@@ -7,7 +7,7 @@ public class RasmusQuickCamera : MonoBehaviour
 
     public Transform followTransform; // transform to follow
     public int sceneIndex; // Current SceneIndex
-    public float camYOffset; // Offset on y axis. Used only in main menu
+    public float camYOffset; // Offset on y axis.
     public GameObject camParent;
 
 
@@ -20,7 +20,7 @@ public class RasmusQuickCamera : MonoBehaviour
     }
     void FixedUpdate()
     {
-        camParent.transform.position = new Vector3(camParent.transform.position.x, followTransform.position.y, camParent.transform.position.z);
+        camParent.transform.position = new Vector3(camParent.transform.position.x, followTransform.position.y + camYOffset, camParent.transform.position.z);
     }
 
     IEnumerator CameraShake(float duration, float maxMagnitude, float attack, float decay)
