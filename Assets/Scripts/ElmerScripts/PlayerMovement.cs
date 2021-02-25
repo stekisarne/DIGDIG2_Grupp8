@@ -121,6 +121,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+
     void WalkCooldown()
     {
         currentWalkCooldown = Mathf.Max(currentWalkCooldown - Time.deltaTime, 0);

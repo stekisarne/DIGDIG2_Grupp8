@@ -20,7 +20,7 @@ GameObject:
   - component: {fileID: 5895125912447885178}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -193,6 +193,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyDamage: 50
+  biteParticle: {fileID: 0}
+  mouth: {fileID: 0}
 --- !u!95 &5895125912447885180
 Animator:
   serializedVersion: 3
@@ -225,7 +227,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseHp: 10
-  takenDamage: 0
+  enemyHp: 0
   Timer: 0
 --- !u!114 &5895125912447885178
 MonoBehaviour:

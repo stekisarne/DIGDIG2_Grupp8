@@ -12,6 +12,8 @@ public class PlayerAttack : MonoBehaviour
     float angle;
     float knockbackAngleX;
     float knockbackAngleY;
+    Vector2 dir;
+     public float thrustLength;
     bool isSlaming = false;
     public float slamVelocity;
     public float basicCD;
@@ -75,13 +77,40 @@ public class PlayerAttack : MonoBehaviour
             Debug.Log("swing");
             SwordRotation();
             swordAnim.Play("sword swing");
+            movementScript.walkCooldown = 0.05f;
         }       
+    }
+    private void SwordRotation()
+    {
+        if (Input.GetAxis("Vertical") != 0)
+        {
+            knockbackAngleX = Input.GetAxis("Horizontal");
+            knockbackAngleY = Input.GetAxis("Vertical");
+            
+            dir = new Vector2(knockbackAngleX, knockbackAngleY);
+           
+            angle = Mathf.Atan2(knockbackAngleX, knockbackAngleY) * Mathf.Rad2Deg * -1 + 90;
+        }
+        else if (movementScript.isFacingRight)
+        {
+            angle = 0;
+            dir = new Vector2(1, 0);
+        }
+        else {
+            angle = 180;
+            dir = new Vector2(-1, 0);
+        }
+
+        playerRB.AddForce(dir.normalized * thrustLength, ForceMode2D.Impulse);
+        transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
     }
     public void AttackStart()
     {
         Debug.Log("attack start");
         basicHB.enabled = true;
         anim.attacking = true;
+        
+       
     }
     public void AttackEnd()
     {
@@ -91,21 +120,4 @@ public class PlayerAttack : MonoBehaviour
         currentBasicCD = basicCD;
     }
 
-    private void SwordRotation()
-    {
-        if (Input.GetAxis("Vertical") != 0)
-        {
-            knockbackAngleX = Input.GetAxis("Horizontal");
-            knockbackAngleY = Input.GetAxis("Vertical");
-            angle = Mathf.Atan2(knockbackAngleX, knockbackAngleY) * Mathf.Rad2Deg * -1 + 90;
-        }
-        else if (movementScript.isFacingRight)
-        {
-            angle = 0;
-        }
-        else { angle = 180; }
-        
-
-        transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
-    }
 }
