@@ -10,13 +10,16 @@ public class EnemyAttack : MonoBehaviour
     EnemyMovement enemyMovement;
     Animator enemyAnimator;
     public ParticleSystem biteParticle;
-    public GameObject mouth; //A gameobject where the mouth of the enemy is
+    public GameObject mouth; //Gameobject where a bite particle Instantiates
+    public AudioSource walkAudio;
+    public AudioSource attackAudio;
 
     void Start()
     {
         playerHealth = FindObjectOfType<PlayerHealth>();    //Finds the object with the PlayerHealth script. 
         enemyAnimator = FindObjectOfType<Animator>();
         enemyMovement = FindObjectOfType<EnemyMovement>();
+        walkAudio.Play();
     }
 
     private void Update()
@@ -34,21 +37,20 @@ public class EnemyAttack : MonoBehaviour
         {
             enemyAnimator.SetBool("NearPlayer", true);
             enemyMovement.enemySpeed = 0;
+            walkAudio.Stop();
         }
         else if(other.tag != "Player")
         {
             enemyAnimator.SetBool("NearPlayer", false);
             enemyMovement.enemySpeed = 1.5f;
+            walkAudio.Play();
         }
     }
 
     public void BiteAttack() //Deals damage to the player when an animationen event triggers this function
     {
         playerHealth.playerHp -= enemyDamage;
-    }
-
-    public void BiteSplat() //A splat particle for when the enemy bites
-    {
-        Instantiate(biteParticle, transform.parent);
+        Instantiate(biteParticle, mouth.transform);
+        attackAudio.Play();
     }
 }

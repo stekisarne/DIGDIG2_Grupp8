@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Shader Graphs_BloodDropShade
-  m_Shader: {fileID: -6465566751694194690, guid: a41079749e25c2b4b82e5623985ca528, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 5d895340c1227f347b3d4ee189b94fe0, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -23,11 +23,16 @@ Material:
         m_Texture: {fileID: 2800000, guid: 02fdba2e7374517479df2a53708fcb89, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _BloodParticleTex:
+        m_Texture: {fileID: 2800000, guid: 02fdba2e7374517479df2a53708fcb89, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _Emission:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats: []
     m_Colors:
-    - Color_7BFC05DC: {r: 1, g: 0, b: 0, a: 0}
+    - Color_7BFC05DC: {r: 1, g: 1, b: 1, a: 0}
+    - Color_DE4B9FB5: {r: 0.735849, g: 0, b: 0.03174273, a: 0}
   m_BuildTextureStacks: []

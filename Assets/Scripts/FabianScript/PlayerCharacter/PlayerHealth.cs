@@ -7,6 +7,7 @@ public class PlayerHealth : MonoBehaviour
     public int playerHp;    //A variabel for the player health points.
     EnemyMovement enemyMovement; //Adds connection to the Enemymovement
     Animator enemyAnimator; //Adds a connection to the enemy animator
+    EnemyAttack enemyAttack;
 
     public void Awake() //Sets the players health to a set value before the game starts
     {
@@ -17,6 +18,7 @@ public class PlayerHealth : MonoBehaviour
     {
         enemyAnimator = FindObjectOfType<Animator>();
         enemyMovement = FindObjectOfType<EnemyMovement>();
+        enemyAttack = FindObjectOfType<EnemyAttack>();
     }
 
     public void Death()
@@ -26,6 +28,8 @@ public class PlayerHealth : MonoBehaviour
             enemyAnimator.SetBool("NearPlayer", false);
             enemyAnimator.SetBool("PlayerIsDead", true);
             enemyMovement.enemySpeed = 1.5f;
+            enemyAttack.walkAudio.Play();
+
             Destroy(this.gameObject);
         }
     }
