@@ -8,6 +8,8 @@ TagManager:
   - Ground
   - Chunk
   - Walls
+  - Enemy
+  - Turret
   - Turret
   - Enemy
   layers:
