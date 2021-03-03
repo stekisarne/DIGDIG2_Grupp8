@@ -18,7 +18,8 @@ public class FlyingEnemyMovement : MonoBehaviour
     public bool maxDistanceReached;
 
     Vector3 patrolPos;
-    
+
+   public AudioSource chargeNoise;
 
     private enum State { Patrolling, Chasing, Idle }
     State currentState;
@@ -78,22 +79,23 @@ public class FlyingEnemyMovement : MonoBehaviour
 
         if (currentState == State.Idle && distance < detectionRange || currentState == State.Patrolling && distance < detectionRange)
         {
+
             flyingRBody.velocity = Vector2.zero;
+            chargeNoise.Play();
             currentState = State.Chasing;
+            
         }
 
-        if (currentState == State.Chasing && distance < detectionRange)
+        if (currentState == State.Chasing)
         {
             flyingRBody.MovePosition(flyingRBody.transform.position + dir * chasingSpeed * Time.deltaTime);
+            
         }
         else if (currentState == State.Patrolling)
         {
             return;
         }
-        else if(currentState == State.Chasing && distance > detectionRange)
-        {
-            currentState = State.Idle;
-        }
+        
 
     }
 
