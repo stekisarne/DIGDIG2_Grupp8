@@ -5,6 +5,7 @@ using UnityEngine;
 public class EaterScript : MonoBehaviour
 {
     [SerializeField] float eaterSpeed;
+    public AudioSource alarm;
     void Update()
     {
         transform.Translate(0, -eaterSpeed * Time.deltaTime, 0); // Moves eater up or down depending on eaterSpeed
@@ -23,6 +24,17 @@ public class EaterScript : MonoBehaviour
         {
             print("chunker");
             EatChunk(other.gameObject); // Calls function and sends the GameObject of triggering object
+        }
+        if(other.tag == "Player")
+        {
+            alarm.Play();
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if(collision.tag == "Player")
+        {
+            alarm.Stop();
         }
     }
 }

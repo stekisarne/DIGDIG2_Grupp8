@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class MainMenu : MonoBehaviour
 {
-    public int sceneIndex; //Scene number in build settings
+    public GameObject infoMenu;
+    public GameObject buttons;
 
     void Start()
     {
@@ -14,20 +17,39 @@ public class MainMenu : MonoBehaviour
 
     void Update()
     {
+        
+    }
+
+    public void Play()
+    {
 
     }
 
-    public void ChangeScene() //changes scene to sceneIndex
+    public void Info()
     {
-        //SceneManager.LoadScene(sceneIndex);
-        print("Changed scene");
+        
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void Back()
     {
-        if (collision.tag == "Player")
-        {
-            ChangeScene();
-        }
+
+    }
+
+    public void Exit()
+    {
+        Application.Quit();
+    }
+
+}
+
+public class MainButtons : MonoBehaviour, ISelectHandler
+{
+    public Button playButton;
+    public Button infoButton;
+    public Button exitButton;
+
+    public void OnSelect(BaseEventData eventData)
+    {
+        
     }
 }

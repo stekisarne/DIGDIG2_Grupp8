@@ -12,6 +12,8 @@ TagManager:
   - Turret
   - Turret
   - Enemy
+  - Chest
+  - Item
   layers:
   - Default
   - TransparentFX
@@ -31,8 +33,8 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
+  - Purchasable
+  - Item
   - 
   - 
   - 
