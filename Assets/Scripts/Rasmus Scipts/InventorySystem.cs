@@ -6,8 +6,8 @@ using TMPro;
 public class InventorySystem : MonoBehaviour
 {
     public List<Items> items = new List<Items>(); //creates a new list based on the class Items
-    public float arrowmulti; //example delete me
     public GameObject itemsMenu;
+    public StatSheet statSheet;
     void Start()
     {
         itemsMenu.SetActive(false);
@@ -33,17 +33,24 @@ public class InventorySystem : MonoBehaviour
         items[itemIndex].UpdateItems();
     }
 
+    public void RemoveItem()
+    {
+
+    }
+
     public void UpdateInventory()
     {
         foreach (Items item in items)
         {
             switch (item.itemName) // string in case should line up with name in inspector
             {
-                case "Arrow"://example delete later
-                    arrowmulti = item.itemCount;
-                    print("arrow" + arrowmulti);
+                case "Life":
+                    statSheet.life = item.itemCount;
                     break;
 
+                case "Power":
+
+                    break;
                 default:
                     break;
             }
@@ -56,7 +63,6 @@ public class Items // simple class to store item variables
 {
     public string itemName;
     public int itemCount;
-    public Sprite itemSprite;
     public TextMeshProUGUI tmpro; // text to change depending on itemCount
 
     public void UpdateItems()
