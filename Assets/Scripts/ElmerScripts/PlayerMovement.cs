@@ -18,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     public bool isFacingRight = true;
     public bool isGrounded;
     public float currentWalkCooldown;
+    public bool canTurn = true;
 
     [Header("stats")]
     public float moveSpeed;
@@ -63,7 +64,9 @@ public class PlayerMovement : MonoBehaviour
         }
         GroundWallCheck();
         FallCheck();
-        PlayerLookDir();
+        if (canTurn == true){
+            PlayerLookDir();
+        }
     }
 
    
@@ -121,7 +124,6 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-
     void WalkCooldown()
     {
         currentWalkCooldown = Mathf.Max(currentWalkCooldown - Time.deltaTime, 0);
@@ -178,6 +180,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void PlayerLookDir()
     {
+        Debug.Log(canTurn);
         if (rBody.velocity.x >= 0.3f)
         {
             isFacingRight = true;
