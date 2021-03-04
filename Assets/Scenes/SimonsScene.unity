@@ -819,6 +819,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FlyingEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 3092521206593265762, guid: 5eb90bdb9f959654e827fc6180b1c844, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3092521206593265763, guid: 5eb90bdb9f959654e827fc6180b1c844, type: 3}
       propertyPath: player
       value: 
