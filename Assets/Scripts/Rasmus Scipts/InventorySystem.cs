@@ -33,9 +33,10 @@ public class InventorySystem : MonoBehaviour
         items[itemIndex].UpdateItems();
     }
 
-    public void RemoveItem()
+    public void RemoveItem(int itemIndex)
     {
-
+        items[itemIndex].itemCount--;
+        items[itemIndex].UpdateItems();
     }
 
     public void UpdateInventory()
@@ -49,8 +50,9 @@ public class InventorySystem : MonoBehaviour
                     break;
 
                 case "Power":
-
+                    statSheet.powerMultiplier = 1 + (item.itemCount * 0.1f);
                     break;
+
                 default:
                     break;
             }
