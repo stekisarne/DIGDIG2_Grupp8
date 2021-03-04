@@ -9,10 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1416974199}
-  - component: {fileID: 1416974200}
   - component: {fileID: 10331921}
   - component: {fileID: 1112337177}
   - component: {fileID: 1112337178}
+  - component: {fileID: 1748977630}
+  - component: {fileID: 1748977629}
   m_Layer: 0
   m_Name: AttackHandler
   m_TagString: Untagged
@@ -27,28 +28,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1416974198}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8209819323253411602}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1416974200
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1416974198}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c748c844ef07f54191f03e966da62f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  slamVelocity: 50
-  basicCD: 0.1
-  damage: 2
 --- !u!61 &10331921
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -120,7 +106,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.625, y: 0.75}
+  m_Size: {x: 4, y: 4}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
@@ -145,6 +131,42 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!58 &1748977630
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1416974198}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.7
+--- !u!114 &1748977629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1416974198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a77b2e20cb3e18940b4cf56d7c15568e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementScript: {fileID: 0}
+  SlamHB: {fileID: 0}
+  slamVelocity: 100
+  basicCD: 0.5
+  lungeDamper: 200
+  damage: 1
+  knockbackForce: 30
+  selfKnockbackForce: 6
 --- !u!1 &1936173656
 GameObject:
   m_ObjectHideFlags: 0
@@ -287,13 +309,13 @@ GameObject:
   m_Component:
   - component: {fileID: 8209819323253411602}
   - component: {fileID: 8209819323253411603}
-  - component: {fileID: 8209819323253411605}
   - component: {fileID: 8209819323253411600}
   - component: {fileID: 8209819323253411601}
   - component: {fileID: 8209819323253411604}
   - component: {fileID: 8209819323253411607}
   - component: {fileID: 1887827524}
   - component: {fileID: 754813448}
+  - component: {fileID: 1406628271}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -370,29 +392,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8209819323253411605
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8209819323253411614}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c8c12e3159fbe14c90378a01d13f0b7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  groundCheck: {fileID: 8209819322542606125}
-  wallCheck: {fileID: 8209819323282002553}
-  isFacingRight: 0
-  isGrounded: 0
-  currentWalkCooldown: 0
-  moveSpeed: 2300
-  jumpForce: 1050
-  airJumps: 1
-  fallMultiplier: 5
-  lowJumpMultiplier: 15
-  walkCooldown: 0.15
 --- !u!61 &8209819323253411600
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -517,6 +516,30 @@ MonoBehaviour:
   dashing: 0
   attacking: 0
   slamng: 0
+--- !u!114 &1406628271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8209819323253411614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6913e9b27c817b94e8bda107936762c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundCheck: {fileID: 8209819322542606125}
+  wallCheck: {fileID: 8209819323282002553}
+  isFacingRight: 1
+  isGrounded: 0
+  currentWalkCooldown: 0
+  canTurn: 1
+  moveSpeed: 2300
+  jumpForce: 1050
+  airJumps: 1
+  fallMultiplier: 5
+  lowJumpMultiplier: 15
+  walkCooldown: 0.15
 --- !u!1 &8209819323282002553
 GameObject:
   m_ObjectHideFlags: 0
