@@ -7,31 +7,50 @@ public class BossScript : MonoBehaviour
     private enum Phase { Vulnerable, Invulnerable }
     Phase currentPhase;
 
-    public Transform turretPrefab;
+    VeinHandlerScript veinHandler;
 
-    public float turretsToSpawn;
-    public bool turretsSpawned;
-    public float turretsKilled;
+    public float damageTaken;
     void Start()
     {
+        veinHandler = FindObjectOfType<VeinHandlerScript>();
 
-
-        currentPhase = Phase.Invulnerable;
-
-        Instantiate(turretPrefab, new Vector3(-11, 1, 0), Quaternion.identity);
+        
     }
 
     
     void Update()
     {
-        SpawnTurrets();
+        SetPhase();
+        MakeInvulnerable();
     }
 
-    private void SpawnTurrets()
-    {
-        if (currentPhase == Phase.Invulnerable && turretsSpawned == false)
-        {
+    
 
+    void SetPhase()
+    {
+        if (veinHandler.VeinCount == 0 && currentPhase == Phase.Invulnerable)
+        {
+            Invoke("veinHandler.SpawnVeins", 10f);
+            
+            currentPhase = Phase.Vulnerable;
+        }
+        else if(currentPhase == Phase.Vulnerable)
+        {
+            
+            GetComponent<BoxCollider2D>().enabled = true;
+        }
+    }
+
+    void MakeInvulnerable()
+    {
+        if(veinHandler.VeinCount > 0)
+        {
+            currentPhase = Phase.Invulnerable;
+        }
+
+        if(currentPhase == Phase.Invulnerable)
+        {
+            GetComponent<BoxCollider2D>().enabled = false;
         }
     }
 }

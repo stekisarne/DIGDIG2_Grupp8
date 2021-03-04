@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8668703447891654609}
   - component: {fileID: -8138427799979311848}
   - component: {fileID: -3990980115876300071}
+  - component: {fileID: 7669930512748267982}
   m_Layer: 0
   m_Name: BossTurret
   m_TagString: Untagged
@@ -131,3 +132,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &7669930512748267982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2372218401621309742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57457abec5d82a64cbe146d78e25e66c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
