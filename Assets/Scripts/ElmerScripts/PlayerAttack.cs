@@ -4,20 +4,25 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    private PlayerMovement movementScript;
+    public PlayerMovement movementScript;
     PlayerAnimationHandler anim;
     Animator swordAnim;
     private Rigidbody2D playerRB;
     private BoxCollider2D basicHB;
+    public CircleCollider2D SlamHB;
     float angle;
     float knockbackAngleX;
     float knockbackAngleY;
     bool isSlaming = false;
     public float slamVelocity;
     public float basicCD;
+    public float lungeDamper = 150;
     float currentBasicCD;
     private EnemyHealth target;
     public float damage;
+    private Vector2 knockbackAngle;
+    public float knockbackForce = 3;
+    public float selfKnockbackForce = 3;
 
     // Start is called before the first frame update
     void Start()
@@ -32,10 +37,15 @@ public class PlayerAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        BasicAttack();
+        Debug.Log("isslaming is " +isSlaming);
+        if (isSlaming == false)
+        {
+            StartBasicAttack();
+        }
         if (Input.GetButtonDown("Fire2") && !movementScript.isGrounded && !isSlaming)
         {
             isSlaming = true;
+            SlamHB.enabled = true;
             Debug.Log("Start Slam");
             playerRB.velocity = new Vector2(0, -slamVelocity);
         }
@@ -54,6 +64,7 @@ public class PlayerAttack : MonoBehaviour
             Debug.Log("Stop Slam");
             movementScript.enabled = true;
             isSlaming = false;
+            SlamHB.enabled = false;
         }
     }
 
@@ -62,18 +73,26 @@ public class PlayerAttack : MonoBehaviour
         if (collision.tag == "Enemy")
         {
             target = collision.GetComponent<EnemyHealth>();
-
-            target.OnHit(damage);
+            if (target != null)
+            {
+                playerRB.velocity = Vector2.zero;
+                playerRB.AddForce(-knockbackAngle * selfKnockbackForce, ForceMode2D.Impulse);
+                target.OnHit(damage, knockbackAngle, knockbackForce);
+            }
         }
     }
 
-    private void BasicAttack()
+    private void StartBasicAttack()
     {
         currentBasicCD = Mathf.Max(0, currentBasicCD - Time.deltaTime);
         if (Input.GetButtonDown("Fire1"))
         {
-            Debug.Log("swing");
             SwordRotation();
+            playerRB.velocity =  new Vector2(0, playerRB.velocity.y);
+            playerRB.AddForce(knockbackAngle * movementScript.moveSpeed / lungeDamper,ForceMode2D.Impulse);
+            movementScript.canTurn = false;
+            Debug.Log(movementScript.canTurn);
+            currentBasicCD = Mathf.Infinity;
             swordAnim.Play("sword swing");
         }       
     }
@@ -81,31 +100,43 @@ public class PlayerAttack : MonoBehaviour
     {
         Debug.Log("attack start");
         basicHB.enabled = true;
-        anim.attacking = true;
+        anim.attacking = true;      
     }
     public void AttackEnd()
     {
         Debug.Log("attack stop");
         basicHB.enabled = false;
         anim.attacking = false;
-        currentBasicCD = basicCD;
+        movementScript.canTurn = true;
+       currentBasicCD = basicCD;
     }
 
     private void SwordRotation()
-    {
+    {        
         if (Input.GetAxis("Vertical") != 0)
         {
             knockbackAngleX = Input.GetAxis("Horizontal");
             knockbackAngleY = Input.GetAxis("Vertical");
+            knockbackAngle = new Vector2(knockbackAngleX, knockbackAngleY).normalized;
             angle = Mathf.Atan2(knockbackAngleX, knockbackAngleY) * Mathf.Rad2Deg * -1 + 90;
         }
         else if (movementScript.isFacingRight)
         {
             angle = 0;
+            knockbackAngle = Vector2.right;
+            
         }
-        else { angle = 180; }
-        
+        else { 
+            angle = 180;
+            knockbackAngle = Vector2.left;
+        }
+        if (angle < -90 || angle > 90)
+        {
+            transform.rotation = Quaternion.Euler(new Vector3(180, 0, -angle));
+        } else
+        {
+            transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+        }
 
-        transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
     }
 }

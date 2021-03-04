@@ -821,20 +821,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3092521206593265762, guid: 5eb90bdb9f959654e827fc6180b1c844, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3092521206593265763, guid: 5eb90bdb9f959654e827fc6180b1c844, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 2116721731}
-    - target: {fileID: 3092521206593265772, guid: 5eb90bdb9f959654e827fc6180b1c844, type: 3}
-      propertyPath: cooldown
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3092521206593265772, guid: 5eb90bdb9f959654e827fc6180b1c844, type: 3}
-      propertyPath: flyingEnemyDamage
-      value: 20
-      objectReference: {fileID: 0}
     - target: {fileID: 3092521206593265775, guid: 5eb90bdb9f959654e827fc6180b1c844, type: 3}
       propertyPath: m_LocalPosition.x
       value: 12.9
@@ -877,14 +869,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3092521206593265775, guid: 5eb90bdb9f959654e827fc6180b1c844, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5416579518488379351, guid: 5eb90bdb9f959654e827fc6180b1c844, type: 3}
-      propertyPath: Mute
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5416579518488379351, guid: 5eb90bdb9f959654e827fc6180b1c844, type: 3}
-      propertyPath: Loop
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
