@@ -11,7 +11,6 @@ public class EnemyAttack : MonoBehaviour
     Animator enemyAnimator;
     public ParticleSystem biteParticle;
     public GameObject mouth; //Gameobject where a bite particle Instantiates
-    public AudioSource walkAudio;
     public AudioSource attackAudio;
 
     void Start()
@@ -19,7 +18,6 @@ public class EnemyAttack : MonoBehaviour
         playerHealth = FindObjectOfType<PlayerHealth>();    //Finds the object with the PlayerHealth script. 
         enemyAnimator = FindObjectOfType<Animator>();
         enemyMovement = FindObjectOfType<EnemyMovement>();
-        walkAudio.Play();
     }
 
     private void Update()
@@ -37,13 +35,11 @@ public class EnemyAttack : MonoBehaviour
         {
             enemyAnimator.SetBool("NearPlayer", true);
             enemyMovement.enemySpeed = 0;
-            walkAudio.Stop();
         }
         else if(other.tag != "Player")
         {
             enemyAnimator.SetBool("NearPlayer", false);
             enemyMovement.enemySpeed = 1.5f;
-            walkAudio.Play();
         }
     }
 
