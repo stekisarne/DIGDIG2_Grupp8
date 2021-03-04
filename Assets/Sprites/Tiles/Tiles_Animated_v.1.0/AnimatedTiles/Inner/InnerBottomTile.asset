@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: InnerBottomTile
   m_EditorClassIdentifier: 
   m_AnimatedSprites:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 7282656102979859589, guid: f3157b2328bc6fa42a92cbbbd8f1e038, type: 3}
+  - {fileID: 850204754684876480, guid: e7b52f18a7c84774c88311eca626adb8, type: 3}
+  - {fileID: 8612549669957242210, guid: 91b0bd285d9a7a240ae365f1f7802c32, type: 3}
+  - {fileID: 2584777450037850856, guid: b3c0030a0171c1746a6e7223a1903d3b, type: 3}
+  - {fileID: -8239369780062100763, guid: 83dea1aada2d60d4ebfeb63690909493, type: 3}
+  - {fileID: -5221718175405712668, guid: a3f7e2e7d65307448a93d20a6e93543a, type: 3}
   m_MinSpeed: 2
   m_MaxSpeed: 2
   m_AnimationStartTime: 0
