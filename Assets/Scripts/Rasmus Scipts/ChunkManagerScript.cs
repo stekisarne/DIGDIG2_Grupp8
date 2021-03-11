@@ -16,15 +16,16 @@ public class ChunkManagerScript : MonoBehaviour
     [SerializeField] int chunkSize; // How big the chunk is on the y axis
     int lastNumber; //ignore
     public static int chunkNumber; // What chunk it is. Used for difficulty scaling
+    [SerializeField] StatSheet statsheet;
 
     void Update()
     {
         //if (Input.GetKeyDown(KeyCode.Space))
-       // {
-       //     LoadChunk();
-       //     DeloadChunk();
-      //  }
-        
+        // {
+        //     LoadChunk();
+        //     DeloadChunk();
+        //  }
+
     }
 
     public void LoadChunk() // Loads new Chunk. Used in ChunkScript
@@ -40,7 +41,14 @@ public class ChunkManagerScript : MonoBehaviour
 
         int i = Random.Range(0, chunks.Length); // gives i random value
 
-        while (i == lastNumber) // if i is same as last chunk number then re roll
+        if (chunks.Length > 1)
+        {
+            while (i == lastNumber) // if i is same as last chunk number then re roll
+            {
+                i = Random.Range(0, chunks.Length);
+            }
+        }
+        else if (chunks.Length == 1)
         {
             i = Random.Range(0, chunks.Length);
         }
@@ -57,6 +65,8 @@ public class ChunkManagerScript : MonoBehaviour
         LoadedChunk = Instantiate(chunkToLoad, transform.position + newPos, Quaternion.identity, chunkParent.transform); // creates new chunk and assigns it to LoadedChunk
 
         chunkNumber++;
+
+        statsheet.stage = chunkNumber;
 
         print("ChunkNumber: " + chunkNumber);
 

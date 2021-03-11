@@ -6,6 +6,7 @@ public class StatSheet : MonoBehaviour
 {
     public float powerMultiplier;
     public int life;
+    public int stage;
 }
 
 
