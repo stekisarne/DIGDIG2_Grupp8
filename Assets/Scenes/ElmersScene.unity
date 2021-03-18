@@ -123,7 +123,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!43 &108013317
+--- !u!43 &229825397
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -701,7 +701,7 @@ GameObject:
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -718,8 +718,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseHp: 10
-  enemyHp: 0
-  Timer: 0
+  scaling: 0.03
+  extraLives: 0
+  DeathSequence: {fileID: 0}
+  currentHp: 0
 --- !u!212 &816497664
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -779,7 +781,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 816497662}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.57, y: -1.53, z: -102.60297}
+  m_LocalPosition: {x: -4.21, y: 0.83, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1488,10 +1490,10 @@ PrefabInstance:
     - target: {fileID: 5895125912447885178, guid: 088fd9899e26dfd48aa40c834989e5b1, type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 108013317}
+      objectReference: {fileID: 229825397}
     - target: {fileID: 5895125912447885178, guid: 088fd9899e26dfd48aa40c834989e5b1, type: 3}
       propertyPath: m_InstanceId
-      value: -1192
+      value: -2240
       objectReference: {fileID: 0}
     - target: {fileID: 5895125912447885179, guid: 088fd9899e26dfd48aa40c834989e5b1, type: 3}
       propertyPath: baseHp
@@ -1550,6 +1552,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1748977629, guid: cdb8fa78db07c0447811bec016bd96ff, type: 3}
+      propertyPath: bounceUp
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1748977629, guid: cdb8fa78db07c0447811bec016bd96ff, type: 3}
+      propertyPath: slamVelocity
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 1748977629, guid: cdb8fa78db07c0447811bec016bd96ff, type: 3}
+      propertyPath: selfKnockbackForce
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1748977629, guid: cdb8fa78db07c0447811bec016bd96ff, type: 3}
+      propertyPath: lungeDamper
+      value: 250
+      objectReference: {fileID: 0}
     - target: {fileID: 8209819323253411602, guid: cdb8fa78db07c0447811bec016bd96ff, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.83
