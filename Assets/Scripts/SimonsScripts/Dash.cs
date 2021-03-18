@@ -10,15 +10,18 @@ public class Dash : MonoBehaviour
     private PlayerAnimationHandler anim;
 
     public float dashCD = 3;
-    private float currentDashCD;
+    public float currentDashCD;
     public float dashDuration;
     private float currentDashDuration;
     private bool isDashing;
+    private PlayerMovement movementScript;
     public float dashSpeed;
     Vector2 dir;
 
     void Start()
     {
+
+        movementScript = GetComponent<PlayerMovement>();
         rBody = GetComponent<Rigidbody2D>();
         anim = GetComponent<PlayerAnimationHandler>();
         playerMovement = GetComponent<PlayerMovement>();
@@ -73,6 +76,7 @@ public class Dash : MonoBehaviour
     }
     void StopDash()
     {
+        movementScript.remainingJumps = movementScript.airJumps;
         currentDashCD = dashCD;
         rBody.velocity = new Vector2(0, 0);
     }

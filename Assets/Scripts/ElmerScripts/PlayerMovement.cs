@@ -24,7 +24,7 @@ public class PlayerMovement : MonoBehaviour
     public float moveSpeed;
     public float jumpForce;
     public int airJumps = 0;
-    private int remainingJumps;
+    public int remainingJumps;
     public float fallMultiplier = 2.5f;
     public float lowJumpMultiplier = 2f;
     public float walkCooldown;
@@ -116,10 +116,11 @@ public class PlayerMovement : MonoBehaviour
         {
             anim.walking = true;
             rBody.AddForce(new Vector2(moveSpeed * Input.GetAxis("Horizontal") * Time.deltaTime,0));
-           
+            canTurn = true;
         }
         else
         {
+            canTurn = false;
             anim.walking = false;
         }
     }
@@ -181,12 +182,12 @@ public class PlayerMovement : MonoBehaviour
     private void PlayerLookDir()
     {
         Debug.Log(canTurn);
-        if (rBody.velocity.x >= 0.3f)
+        if (Input.GetAxis("Horizontal") > 0)
         {
             isFacingRight = true;
             transform.rotation = new Quaternion(0, 0, 0, 0);
         }
-        if (rBody.velocity.x <= -0.3f)
+        if (Input.GetAxis("Horizontal") < 0)
         {
             isFacingRight = false;
             transform.rotation = new Quaternion(0, 180, 0, 0);

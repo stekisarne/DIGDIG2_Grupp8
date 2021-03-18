@@ -9,24 +9,34 @@ public class PlayerAttack : MonoBehaviour
     Animator swordAnim;
     private Rigidbody2D playerRB;
     private BoxCollider2D basicHB;
-    public CircleCollider2D SlamHB;
+    CircleCollider2D SlamHB;
     float angle;
     float knockbackAngleX;
     float knockbackAngleY;
     bool isSlaming = false;
-    public float slamVelocity;
-    public float basicCD;
-    public float lungeDamper = 150;
-    float currentBasicCD;
-    private EnemyHealth target;
-    public float damage;
+    private Health target;
     private Vector2 knockbackAngle;
+    private Dash dash;
+
+    [Header("slaming")]
+    [SerializeField] public float slamVelocity;
+    public float bounceUp;
+
+    [Header("basic attack")]
+    [SerializeField] public float damage;
+    public float basicCD;
+    float currentBasicCD;
     public float knockbackForce = 3;
     public float selfKnockbackForce = 3;
+    public float lungeDamper = 150;
 
+    
     // Start is called before the first frame update
     void Start()
     {
+
+        dash = GetComponentInParent<Dash>();
+        SlamHB = GetComponent<CircleCollider2D>();
         swordAnim = GetComponent<Animator>();
         anim = GetComponentInParent<PlayerAnimationHandler>();
         playerRB = GetComponentInParent<Rigidbody2D>();
@@ -44,8 +54,10 @@ public class PlayerAttack : MonoBehaviour
         }
         if (Input.GetButtonDown("Fire2") && !movementScript.isGrounded && !isSlaming)
         {
+            anim.slaming = true;
             isSlaming = true;
             SlamHB.enabled = true;
+            damage = damage * 2; 
             Debug.Log("Start Slam");
             playerRB.velocity = new Vector2(0, -slamVelocity);
         }
@@ -59,12 +71,16 @@ public class PlayerAttack : MonoBehaviour
     {
         movementScript.enabled = false;
         playerRB.AddForce(new Vector2(0,-slamVelocity));
-        if(playerRB.velocity.y == 0)
+        if(playerRB.velocity.y >= 0)
         {
+            anim.slaming = false;
             Debug.Log("Stop Slam");
             movementScript.enabled = true;
+            movementScript.remainingJumps = movementScript.airJumps;
+            dash.currentDashCD = 0;
             isSlaming = false;
             SlamHB.enabled = false;
+            damage = damage / 2; //same as above.
         }
     }
 
@@ -72,11 +88,18 @@ public class PlayerAttack : MonoBehaviour
     {
         if (collision.tag == "Enemy")
         {
-            target = collision.GetComponent<EnemyHealth>();
+            target = collision.GetComponent<Health>();
             if (target != null)
             {
                 playerRB.velocity = Vector2.zero;
-                playerRB.AddForce(-knockbackAngle * selfKnockbackForce, ForceMode2D.Impulse);
+                if (isSlaming)
+                {
+                    playerRB.velocity = new Vector2(0, bounceUp);
+                }
+                else
+                {
+                    playerRB.AddForce(-knockbackAngle * selfKnockbackForce, ForceMode2D.Impulse);
+                }
                 target.OnHit(damage, knockbackAngle, knockbackForce);
             }
         }
@@ -107,7 +130,6 @@ public class PlayerAttack : MonoBehaviour
         Debug.Log("attack stop");
         basicHB.enabled = false;
         anim.attacking = false;
-        movementScript.canTurn = true;
        currentBasicCD = basicCD;
     }
 
