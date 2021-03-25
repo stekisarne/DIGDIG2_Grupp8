@@ -27,17 +27,35 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit2D(Collider2D other)  //Changes if the enemy is moving right or left
+    private void OnTriggerEnter2D(Collider2D other)  //Changes if the enemy is moving right or left when Entering a wall
     {
-        if (movingRight == true) 
+        if (movingRight == true && other.tag == "Walls") 
         {
             movingRight = false;
             transform.Rotate(0.0f, -180f, 0.0f);
+            Debug.Log("TriggerWall 1");
         }
-        else
+        else if (movingRight == false && other.tag == "Walls")
         {
             movingRight = true;
             transform.Rotate(0.0f, 180f, 0.0f);
+            Debug.Log("TriggerWall 2");
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other) //Changes if the enemy is moving right or left when exiting ground.
+    {
+        if (movingRight == true && other.tag == "Ground")
+        {
+            movingRight = false;
+            transform.Rotate(0.0f, -180f, 0.0f);
+            Debug.Log("TriggerGround 1");
+        }
+        else if (movingRight == false && other.tag == "Ground")
+        {
+            movingRight = true;
+            transform.Rotate(0.0f, 180f, 0.0f);
+            Debug.Log("Triggerground 2");
         }
     }
 }

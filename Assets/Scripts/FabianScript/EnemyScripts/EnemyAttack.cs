@@ -11,8 +11,8 @@ public class EnemyAttack : MonoBehaviour
     Animator enemyAnimator;
     public ParticleSystem biteParticle;
     public GameObject mouth; //Gameobject where a bite particle Instantiates
-    public AudioSource walkAudio;
     public AudioSource attackAudio;
+    public AudioSource walkAudio;
 
     void Start()
     {

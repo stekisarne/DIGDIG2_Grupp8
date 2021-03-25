@@ -15,7 +15,7 @@ public class PlayerAnimationHandler : MonoBehaviour
     public bool grounded;
     public bool dashing;
     public bool attacking;
-    public bool slamng;
+    public bool slaming;
 
     // Start is called before the first frame update
     void Start()
@@ -25,7 +25,8 @@ public class PlayerAnimationHandler : MonoBehaviour
 
     private void Update()
     {
-        if (dashing) ChangeAnimationState("dash");
+        if (slaming) ChangeAnimationState("slam");
+        else if (dashing) ChangeAnimationState("dash");
         else if (attacking) ChangeAnimationState("attack");
         else if (jumping) ChangeAnimationState("jump");
         else if (falling) ChangeAnimationState("falling");
