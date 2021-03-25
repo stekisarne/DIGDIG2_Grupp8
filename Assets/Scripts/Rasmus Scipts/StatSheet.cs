@@ -5,7 +5,7 @@ using UnityEngine;
 public class StatSheet : MonoBehaviour
 {
     public float powerMultiplier;
-    public int life;
+    public int health;
     public int stage;
 }
 

@@ -74,4 +74,9 @@ public class ChunkManagerScript : MonoBehaviour
 
         print("loaded " + chunkToLoad.name);
     }
+
+    public void LoadBossChunk()
+    {
+
+    }
 }

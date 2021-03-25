@@ -45,8 +45,8 @@ public class InventorySystem : MonoBehaviour
         {
             switch (item.itemName) // string in case should line up with name in inspector
             {
-                case "Life":
-                    statSheet.life = item.itemCount;
+                case "Health":
+                    statSheet.health = item.itemCount;
                     break;
 
                 case "Power":
