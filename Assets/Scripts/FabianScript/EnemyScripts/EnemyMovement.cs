@@ -33,13 +33,11 @@ public class EnemyMovement : MonoBehaviour
         {
             movingRight = false;
             transform.Rotate(0.0f, -180f, 0.0f);
-            Debug.Log("TriggerWall 1");
         }
         else if (movingRight == false && other.tag == "Walls")
         {
             movingRight = true;
             transform.Rotate(0.0f, 180f, 0.0f);
-            Debug.Log("TriggerWall 2");
         }
     }
 
@@ -49,13 +47,11 @@ public class EnemyMovement : MonoBehaviour
         {
             movingRight = false;
             transform.Rotate(0.0f, -180f, 0.0f);
-            Debug.Log("TriggerGround 1");
         }
         else if (movingRight == false && other.tag == "Ground")
         {
             movingRight = true;
             transform.Rotate(0.0f, 180f, 0.0f);
-            Debug.Log("Triggerground 2");
         }
     }
 }
