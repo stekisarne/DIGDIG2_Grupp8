@@ -14,7 +14,7 @@ public class VeinHandlerScript : MonoBehaviour
     public Vector3 VeinPos3;
     public Vector3 VeinPos4;
 
-    EnemyHealth VeinHealth;
+    Health VeinHealth;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +29,7 @@ public class VeinHandlerScript : MonoBehaviour
     void Update()
     {
         VeinCount = transform.childCount;
+        VeinKillCounter();
     }
 
    public void SpawnVeins()
@@ -37,12 +38,12 @@ public class VeinHandlerScript : MonoBehaviour
         Instantiate(Vein, VeinPos2, Quaternion.identity, parent.transform);
         Instantiate(Vein, VeinPos3, Quaternion.identity, parent.transform);
         Instantiate(Vein, VeinPos4, Quaternion.identity, parent.transform);
-        VeinHealth = GetComponentInChildren<EnemyHealth>();
+        VeinHealth = GetComponentInChildren<Health>();
     }
 
     public void VeinKillCounter()
     {
-        if(VeinHealth.enemyHp <= 0)
+        if(VeinHealth.currentHp <= 0)
         {
             VeinsKilled += 1;
         }

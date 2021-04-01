@@ -22,6 +22,7 @@ public class BossScript : MonoBehaviour
     {
         SetPhase();
         MakeInvulnerable();
+        BossDeath();
     }
 
     
@@ -51,6 +52,14 @@ public class BossScript : MonoBehaviour
         if(currentPhase == Phase.Invulnerable)
         {
             GetComponent<BoxCollider2D>().enabled = false;
+        }
+    }
+
+    void BossDeath()
+    {
+        if(veinHandler.VeinsKilled == 14f)
+        {
+            Destroy(this.gameObject);
         }
     }
 }

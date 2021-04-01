@@ -130,6 +130,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1748977629, guid: cdb8fa78db07c0447811bec016bd96ff, type: 3}
+      propertyPath: movementScript
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8209819323253411602, guid: cdb8fa78db07c0447811bec016bd96ff, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
@@ -749,6 +753,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hurtbox: {fileID: 0}
   dashCD: 3
+  currentDashCD: 0
   dashDuration: 0
   dashSpeed: 3
 --- !u!1001 &102221636539403969
@@ -886,7 +891,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3195446392382368884, guid: 58584b1747d0616468f32e3862213483, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -11.73
+      value: -13.93
       objectReference: {fileID: 0}
     - target: {fileID: 3195446392382368884, guid: 58584b1747d0616468f32e3862213483, type: 3}
       propertyPath: m_LocalPosition.y
