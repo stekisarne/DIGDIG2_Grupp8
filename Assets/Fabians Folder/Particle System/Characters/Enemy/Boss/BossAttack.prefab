@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 848226881914823926}
   - component: {fileID: 848226881914823927}
   m_Layer: 0
-  m_Name: Particle System
+  m_Name: BossAttack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
