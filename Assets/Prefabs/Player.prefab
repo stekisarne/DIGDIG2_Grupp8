@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &419008571
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 419008572}
+  m_Layer: 0
+  m_Name: StepParticleEmitter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &419008572
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 419008571}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.17, y: -0.51, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8209819323253411602}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1416974198
 GameObject:
   m_ObjectHideFlags: 0
@@ -160,13 +190,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementScript: {fileID: 0}
-  SlamHB: {fileID: 0}
-  slamVelocity: 100
-  basicCD: 0.5
-  lungeDamper: 200
+  slamVelocity: 80
+  bounceUp: 50
   damage: 1
+  basicCD: 0.5
   knockbackForce: 30
-  selfKnockbackForce: 6
+  selfKnockbackForce: 12
+  lungeDamper: 250
+  swingSFX: {fileID: 0}
+  slamParticle: {fileID: 0}
+  SlamStartSFX: {fileID: 0}
+  SlamLandSFX: {fileID: 0}
 --- !u!1 &1936173656
 GameObject:
   m_ObjectHideFlags: 0
@@ -242,7 +276,7 @@ GameObject:
   m_Layer: 0
   m_Name: GroundTrigger
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -316,6 +350,7 @@ GameObject:
   - component: {fileID: 1887827524}
   - component: {fileID: 754813448}
   - component: {fileID: 1406628271}
+  - component: {fileID: 83659790}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -338,6 +373,7 @@ Transform:
   - {fileID: 8209819323282002552}
   - {fileID: 1936173657}
   - {fileID: 1416974199}
+  - {fileID: 419008572}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -493,9 +529,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hurtbox: {fileID: 1936173658}
-  dashCD: 3
+  canDash: 0
   dashDuration: 0.2
   dashSpeed: 25
+  dashSound: {fileID: 864498220712699596, guid: d50d8bbe8c86511469d1d623c4dd2fc6, type: 3}
+  dashParticle: {fileID: 6369751328823094920, guid: ccd64507894299e4da5137bb3c50f974, type: 3}
 --- !u!114 &754813448
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -515,7 +553,7 @@ MonoBehaviour:
   grounded: 0
   dashing: 0
   attacking: 0
-  slamng: 0
+  slaming: 0
 --- !u!114 &1406628271
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -534,12 +572,25 @@ MonoBehaviour:
   isGrounded: 0
   currentWalkCooldown: 0
   canTurn: 1
+  stepParticleLocation: {fileID: 419008571}
+  stepParticle: {fileID: 6369751328823094920, guid: ccd64507894299e4da5137bb3c50f974, type: 3}
+  stepSound: {fileID: 3053813386277179218, guid: 45a36bb09edba0e4d9df8168a2c399f5, type: 3}
+  jumpSound: {fileID: 3352282353193555338, guid: 1f7642901617b7147aba622af08ccd73, type: 3}
   moveSpeed: 2300
   jumpForce: 1050
   airJumps: 1
+  remainingJumps: 0
   fallMultiplier: 5
   lowJumpMultiplier: 15
   walkCooldown: 0.15
+--- !u!81 &83659790
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8209819323253411614}
+  m_Enabled: 1
 --- !u!1 &8209819323282002553
 GameObject:
   m_ObjectHideFlags: 0
