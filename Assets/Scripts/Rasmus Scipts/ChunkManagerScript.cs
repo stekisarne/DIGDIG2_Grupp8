@@ -17,6 +17,9 @@ public class ChunkManagerScript : MonoBehaviour
     int lastNumber; //ignore
     public static int chunkNumber; // What chunk it is. Used for difficulty scaling
     [SerializeField] StatSheet statsheet;
+    public GameObject bossChunk;
+    public int stageAmount;
+    Vector3 newPos;
 
     void Update()
     {
@@ -30,53 +33,53 @@ public class ChunkManagerScript : MonoBehaviour
 
     public void LoadChunk() // Loads new Chunk. Used in ChunkScript
     {
-        previousChunk = currentChunk; // Makes currentChunk the previousChunk
-        currentChunk = LoadedChunk; // Makes LoadedChunk the currentChunk
+        
+            previousChunk = currentChunk; // Makes currentChunk the previousChunk
+            currentChunk = LoadedChunk; // Makes LoadedChunk the currentChunk
 
-        Vector3 newPos;
-
-        BoxCollider2D prevCollider = currentChunk.GetComponent<BoxCollider2D>();
-        prevCollider.enabled = false; // Disables previous chunk spawn collider
+            BoxCollider2D prevCollider = currentChunk.GetComponent<BoxCollider2D>();
+            prevCollider.enabled = false; // Disables previous chunk spawn collider
 
 
-        int i = Random.Range(0, chunks.Length); // gives i random value
+            int i = Random.Range(0, chunks.Length); // gives i random value
 
-        if (chunks.Length > 1)
-        {
-            while (i == lastNumber) // if i is same as last chunk number then re roll
+            if (chunks.Length > 1)
+            {
+                while (i == lastNumber) // if i is same as last chunk number then re roll
+                {
+                    i = Random.Range(0, chunks.Length);
+                }
+            }
+            else if (chunks.Length == 1)
             {
                 i = Random.Range(0, chunks.Length);
             }
-        }
-        else if (chunks.Length == 1)
-        {
-            i = Random.Range(0, chunks.Length);
-        }
 
-        lastNumber = i;
+            lastNumber = i;
 
 
-        distanceFromStart = distanceFromStart - chunkSize; // changes distance from spawn depending on size of chunk
+            distanceFromStart = distanceFromStart - chunkSize; // changes distance from spawn depending on size of chunk
 
-        newPos = new Vector3(0f, (float)distanceFromStart, 0f); // sets spawn point of next chunk to distanceFromStart
+            newPos = new Vector3(0f, (float)distanceFromStart, 0f); // sets spawn point of next chunk to distanceFromStart
 
-        chunkToLoad = chunks[i]; // makes chunkToLoad a random chunk based on i
+            chunkToLoad = chunks[i]; // makes chunkToLoad a random chunk based on i
 
-        LoadedChunk = Instantiate(chunkToLoad, transform.position + newPos, Quaternion.identity, chunkParent.transform); // creates new chunk and assigns it to LoadedChunk
+            if (chunkNumber < stageAmount) { LoadedChunk = Instantiate(chunkToLoad, transform.position + newPos, Quaternion.identity, chunkParent.transform); }// creates new chunk and assigns it to LoadedChunk
 
-        chunkNumber++;
+            if (chunkNumber == stageAmount) { Instantiate(bossChunk, transform.position + newPos, Quaternion.identity, chunkParent.transform); }
 
-        statsheet.stage = chunkNumber;
+            chunkNumber++;
 
-        print("ChunkNumber: " + chunkNumber);
+            statsheet.stage = chunkNumber;
 
-        chunkScript = LoadedChunk.GetComponent<ChunkScript>();
+            print("ChunkNumber: " + chunkNumber);
 
-        print("loaded " + chunkToLoad.name);
+            chunkScript = LoadedChunk.GetComponent<ChunkScript>();
+
+            print("loaded " + chunkToLoad.name);
+
+            print("chunknumber " + chunkNumber);
+        
     }
 
-    public void LoadBossChunk()
-    {
-
-    }
 }
