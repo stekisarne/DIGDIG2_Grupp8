@@ -52,11 +52,11 @@ public class PlayerAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("isslaming is " +isSlaming);
-        if (isSlaming == false)
+        if (isSlaming == false && currentBasicCD <= 0)
         {
             StartBasicAttack();
         }
+        currentBasicCD = Mathf.Max(currentBasicCD - Time.deltaTime, 0);
         if (Input.GetButtonDown("Fire2") && !movementScript.isGrounded && !isSlaming)
         {
             anim.slaming = true;
@@ -112,7 +112,7 @@ public class PlayerAttack : MonoBehaviour
 
     private void StartBasicAttack()
     {
-        currentBasicCD = Mathf.Max(0, currentBasicCD - Time.deltaTime);
+        
         if (Input.GetButtonDown("Fire1"))
         {
             SwordRotation();

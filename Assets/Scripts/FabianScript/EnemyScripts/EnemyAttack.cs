@@ -6,7 +6,6 @@ using UnityEngine;
 public class EnemyAttack : MonoBehaviour
 {
     public int enemyDamage; //Sets the enemy damage 
-    PlayerHealth playerHealth;  //A connection with the player health script
     EnemyMovement enemyMovement;
     Animator enemyAnimator;
     public ParticleSystem biteParticle;
@@ -16,7 +15,6 @@ public class EnemyAttack : MonoBehaviour
 
     void Start()
     {
-        playerHealth = FindObjectOfType<PlayerHealth>();    //Finds the object with the PlayerHealth script. 
         enemyAnimator = FindObjectOfType<Animator>();
         enemyMovement = FindObjectOfType<EnemyMovement>();
         walkAudio.Play();
@@ -24,11 +22,7 @@ public class EnemyAttack : MonoBehaviour
 
     private void Update()
     {
-        if (playerHealth != null)
-        {
-            enemyAnimator.SetBool("PlayerIsDead", true);
-            playerHealth.Death();
-        }
+        
     }
 
     public void OnTriggerEnter2D(Collider2D other) //Deals damage too the player character.
@@ -49,7 +43,6 @@ public class EnemyAttack : MonoBehaviour
 
     public void BiteAttack() //Deals damage to the player when an animationen event triggers this function
     {
-        playerHealth.playerHp -= enemyDamage;
         Instantiate(biteParticle, mouth.transform);
         attackAudio.Play();
     }
