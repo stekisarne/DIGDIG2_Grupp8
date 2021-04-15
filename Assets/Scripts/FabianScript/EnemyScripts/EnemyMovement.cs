@@ -6,9 +6,7 @@ public class EnemyMovement : MonoBehaviour
 {
     public Rigidbody2D rBody; //Component rigidbody
     public float enemySpeed; //Variabel for enemy speed
-    public bool enemyGrounded; //A bool to check if the enemy is touching the ground
     public bool movingRight; //A bool to check if the enemy is moving tight or left
-    public GameObject WallDetector; //GameObject in place to see if its collider triggers with a wall collider
 
     void Start()
     {

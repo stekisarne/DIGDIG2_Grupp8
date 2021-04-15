@@ -9,13 +9,16 @@ public class Dash : MonoBehaviour
     public CircleCollider2D hurtbox;
     private PlayerAnimationHandler anim;
 
-    public float dashCD = 3;
-    public float currentDashCD;
+    public bool canDash;
     public float dashDuration;
     private float currentDashDuration;
     private bool isDashing;
     private PlayerMovement movementScript;
     public float dashSpeed;
+
+    [Header("particles and sounds")]
+    public GameObject dashSound = null;
+    public GameObject dashParticle = null;
     Vector2 dir;
 
     void Start()
@@ -29,7 +32,7 @@ public class Dash : MonoBehaviour
 
     void Update()
     {
-        if (currentDashCD <= 0)
+        if (canDash)
         {
             PlayerDash();
         }
@@ -37,8 +40,7 @@ public class Dash : MonoBehaviour
         {
             playerMovement.enabled = true;
             hurtbox.enabled = true;
-            anim.dashing = false;
-            currentDashCD = Mathf.Max(0, currentDashCD - Time.deltaTime);
+            anim.dashing = false;           
         }
     }
 
@@ -62,6 +64,8 @@ public class Dash : MonoBehaviour
 
     void StartDash()
     {
+        Instantiate(dashSound, transform);
+        Instantiate(dashParticle, transform);
         currentDashDuration = dashDuration;
         dir = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
     }
@@ -77,7 +81,7 @@ public class Dash : MonoBehaviour
     void StopDash()
     {
         movementScript.remainingJumps = movementScript.airJumps;
-        currentDashCD = dashCD;
+        canDash = false;
         rBody.velocity = new Vector2(0, 0);
     }
 }
