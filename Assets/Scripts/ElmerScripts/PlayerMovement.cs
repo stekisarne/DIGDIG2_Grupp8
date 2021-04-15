@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
 
     public GameObject groundCheck;
     public GameObject wallCheck;
+    private Dash dash;
     private float coyoteTime;
 
     public enum PlayerCollisionState { ground, wall, none }
@@ -19,6 +20,14 @@ public class PlayerMovement : MonoBehaviour
     public bool isGrounded;
     public float currentWalkCooldown;
     public bool canTurn = true;
+
+    [Header("particles")]
+    public GameObject stepParticleLocation;
+    public GameObject stepParticle;
+
+    [Header("sounds")]
+    public GameObject stepSound;
+    public GameObject jumpSound;
 
     [Header("stats")]
     public float moveSpeed;
@@ -36,6 +45,7 @@ public class PlayerMovement : MonoBehaviour
         anim = GetComponent<PlayerAnimationHandler>();
         isFacingRight = true;
         rBody = GetComponent<Rigidbody2D>();
+        dash = GetComponent<Dash>();
     }
 
     // Update is called once per frame
@@ -83,6 +93,7 @@ public class PlayerMovement : MonoBehaviour
                 isGrounded = true;
                 coyoteTime = 0.15f;
                 remainingJumps = airJumps;
+                dash.canDash = true;
             } else
             {
                 collisionStateUpdateCD = Mathf.Max(0, collisionStateUpdateCD - Time.deltaTime);
@@ -135,7 +146,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetButtonDown("Jump"))
         {
-            anim.jumping = true;
+            Instantiate(jumpSound, transform);
             coyoteTime = 0;
             collisionStateUpdateCD = 0.1f;
             rBody.velocity = new Vector2(rBody.velocity.x, 0);
@@ -148,15 +159,21 @@ public class PlayerMovement : MonoBehaviour
     }
     void FallCheck()
     {
-        if (rBody.velocity.y <= 0.1)
+        if (isGrounded)
         {
+            anim.falling = false;
             anim.jumping = false;
-            if (!isGrounded)
-            {
-                anim.falling = true;
-            }
-            else { anim.falling = false; }
-        } else { anim.falling = false; }
+        }
+        else if (rBody.velocity.y < 0)
+        {          
+          anim.falling = true;
+          anim.jumping = false;
+        }
+        else if (rBody.velocity.y > 0)
+        {
+            anim.falling = false;
+            anim.jumping = true;
+        }
     }
     
 
@@ -164,6 +181,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetButtonDown("Jump"))
         {
+            Instantiate(jumpSound, transform);
             currentWalkCooldown = walkCooldown;
             if (isFacingRight == true)
             {
@@ -203,5 +221,11 @@ public class PlayerMovement : MonoBehaviour
         {
             rBody.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
         }
+    }
+
+    public void StepParticle()
+    {
+        Instantiate(stepSound);
+        Instantiate(stepParticle, stepParticleLocation.transform);
     }
 }
