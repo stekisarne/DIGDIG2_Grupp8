@@ -8,10 +8,10 @@ public class FlyingEnemyAttack : MonoBehaviour
     public float cooldown;
     public float cooldownTimer;
     FlyingEnemyMovement flyingEnemyMovement;
-    PlayerHealth playerHealth;
+    PlayerHpScript playerHealth;
     void Start()
     {
-        playerHealth = FindObjectOfType<PlayerHealth>();
+        playerHealth = FindObjectOfType<PlayerHpScript>();
         flyingEnemyMovement = FindObjectOfType<FlyingEnemyMovement>();
     }
 
@@ -33,12 +33,12 @@ public class FlyingEnemyAttack : MonoBehaviour
 
     }
 
-    private void DamagePlayer()
+    /*private void DamagePlayer()
     {
         if (cooldownTimer <= 0)
         {
             playerHealth.playerHp -= flyingEnemyDamage;
             cooldownTimer = cooldown;
         }
-    }
+    }*///this is outdated
 }

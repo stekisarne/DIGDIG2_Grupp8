@@ -39,7 +39,7 @@ public class PlayerAnimationHandler : MonoBehaviour
         if (currentState == newState) return;
 
         anim.Play("player " + newState);
-        Debug.Log("player " + newState);
+        //Debug.Log("player " + newState);
 
         currentState = newState;
     }
