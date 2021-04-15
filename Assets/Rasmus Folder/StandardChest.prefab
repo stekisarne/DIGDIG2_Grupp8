@@ -321,10 +321,8 @@ MonoBehaviour:
   textObject: {fileID: 5495708827529114705}
   tmp: {fileID: 4422508271542185694}
   dropTable:
-  - {fileID: 359470233181721764, guid: 2fc4b5ee43f1cae49baa1cfc479ac6b8, type: 3}
-  - {fileID: 359470233181721764, guid: 2fc4b5ee43f1cae49baa1cfc479ac6b8, type: 3}
-  - {fileID: 359470233181721764, guid: 2fc4b5ee43f1cae49baa1cfc479ac6b8, type: 3}
-  - {fileID: 359470233181721764, guid: 2fc4b5ee43f1cae49baa1cfc479ac6b8, type: 3}
+  - {fileID: 3329042378000879573, guid: 8b9401abbab3f8842b53a74d087d791f, type: 3}
+  - {fileID: 3329042378000879573, guid: 8b9401abbab3f8842b53a74d087d791f, type: 3}
   chestAnim: {fileID: 2670818072735499930}
   sSource: {fileID: 2910791591676691246}
   sClip: {fileID: 8300000, guid: 704ae5d2d01cce744917ca331a66d393, type: 3}
