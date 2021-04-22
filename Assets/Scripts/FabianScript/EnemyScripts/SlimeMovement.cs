@@ -11,10 +11,12 @@ public class SlimeMovement : MonoBehaviour
     public bool movingUp; //A bool to check if the enemy is moving up
     public bool movingDown; //A bool to check if the enemy is moving down
     public float rotationAngle; //Sets the rotation angle 
+    public CircleCollider2D circleCollider;
 
     void Start()
     {
         rBody = gameObject.GetComponent<Rigidbody2D>(); //Gets rigidbody component
+        circleCollider = gameObject.GetComponent<CircleCollider2D>();
         movingRight = true;
     }
 
@@ -24,63 +26,34 @@ public class SlimeMovement : MonoBehaviour
         rotationAngle = 90.0f;
     }
 
-
-    public void OnTriggerEnter2D(Collider2D Other)
-    {
-        if (movingRight == true && (Other.tag == "Walls" || Other.tag == "Ground"))
-        {
-            movingRight = false;
-            movingUp = true;
-            transform.Rotate(0.0f, 0.0f, rotationAngle);
-        }
-
-        else if (movingUp == true && (Other.tag == "Ground" || Other.tag == "Walls"))
-        {
-            movingUp = false;
-            movingLeft = true;
-            transform.Rotate(0.0f, 0.0f, rotationAngle);
-        }
-
-        else if (movingLeft == true && Other.tag == "Ground")
-        {
-            movingLeft = false;
-            movingDown = true;
-            transform.Rotate(0.0f, 0.0f, rotationAngle);
-        }
-    }
-
     public void OnTriggerExit2D(Collider2D other)
     {
-        if (movingRight == true && other.tag == "Ground" )
+        if (movingRight == true && other.tag == "Walls" && circleCollider)
         {
             movingRight = false;
             movingDown = true;
             transform.Rotate(0.0f, 0.0f, -90.0f);
-            Debug.Log("MovingDown");
         }
 
-        else if (movingDown == true && other.tag == "Ground" )
+        else if (movingDown == true && other.tag == "Walls" && circleCollider)
         {
             movingDown = false;
             movingLeft = true;
             transform.Rotate(0.0f, 0.0f, -rotationAngle);
-            Debug.Log("MovingLeft");
         }
 
-        else if (movingLeft == true && other.tag == "Ground")
+        else if (movingLeft == true && other.tag == "Walls" && circleCollider)
         {
             movingUp = true;
             movingLeft = false;
             transform.Rotate(0.0f, 0.0f, -rotationAngle);
-            Debug.Log("MovingUp");
         }
 
-        else if (movingUp == true && (other.tag == "Ground" || other.tag == "Walls"))
+        else if (movingUp == true && other.tag == "Walls" && circleCollider)
         {
             movingRight = true;
             movingUp = false;
             transform.Rotate(0.0f, 0.0f, -rotationAngle);
-            Debug.Log("MovingRight");
         }
     }
 
