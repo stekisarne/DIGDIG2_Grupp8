@@ -10,10 +10,11 @@ TagManager:
   - Walls
   - Enemy
   - Turret
-  - Turret
   - Enemy
   - Chest
   - Item
+  - Turret2
+  - Turret3
   layers:
   - Default
   - TransparentFX
@@ -25,7 +26,7 @@ TagManager:
   - 
   - Player
   - Background
-  - 
+  - TurretRaycast
   - 
   - 
   - 
