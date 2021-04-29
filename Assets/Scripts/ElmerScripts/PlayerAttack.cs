@@ -30,11 +30,6 @@ public class PlayerAttack : MonoBehaviour
     public float selfKnockbackForce = 3;
     public float lungeDamper = 150;
 
-    [Header("Particles/SFX")]
-    public GameObject swingSFX;
-    public GameObject slamParticle;
-    public GameObject SlamStartSFX;
-    public GameObject SlamLandSFX;
 
     // Start is called before the first frame update
     void Start()

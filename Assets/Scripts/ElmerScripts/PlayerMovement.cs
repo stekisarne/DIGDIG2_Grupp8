@@ -21,13 +21,6 @@ public class PlayerMovement : MonoBehaviour
     public float currentWalkCooldown;
     public bool canTurn = true;
 
-    [Header("particles")]
-    public GameObject stepParticleLocation;
-    public GameObject stepParticle;
-
-    [Header("sounds")]
-    public GameObject stepSound;
-    public GameObject jumpSound;
 
     [Header("stats")]
     public float moveSpeed;
@@ -146,7 +139,6 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetButtonDown("Jump"))
         {
-            Instantiate(jumpSound, transform);
             coyoteTime = 0;
             collisionStateUpdateCD = 0.1f;
             rBody.velocity = new Vector2(rBody.velocity.x, 0);
@@ -181,7 +173,6 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetButtonDown("Jump"))
         {
-            Instantiate(jumpSound, transform);
             currentWalkCooldown = walkCooldown;
             if (isFacingRight == true)
             {
@@ -221,11 +212,5 @@ public class PlayerMovement : MonoBehaviour
         {
             rBody.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
         }
-    }
-
-    public void StepParticle()
-    {
-        Instantiate(stepSound);
-        Instantiate(stepParticle, stepParticleLocation.transform);
     }
 }
