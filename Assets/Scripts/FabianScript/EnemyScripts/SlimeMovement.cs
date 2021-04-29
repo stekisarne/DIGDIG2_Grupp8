@@ -11,29 +11,20 @@ public class SlimeMovement : MonoBehaviour
     public bool movingUp; //A bool to check if the enemy is moving up
     public bool movingDown; //A bool to check if the enemy is moving down
     public float rotationAngle; //Sets the rotation angle 
-    public CircleCollider2D circleCollider;
     public GameObject slimeFeet1;
-    public GameObject slimeFeet2;
-    public GameObject slimeFeet3;
+    public bool slimeIsOnGround;
 
     void Start()
     {
         rBody = gameObject.GetComponent<Rigidbody2D>(); //Gets rigidbody component
-        circleCollider = gameObject.GetComponent<CircleCollider2D>();
         movingRight = true;
     }
 
     void Update()
     {
+
         SlimeMoveDirection();
         rotationAngle = 90.0f;
-
-        RaycastHit2D SlimeFeet1 = Physics2D.Raycast(slimeFeet1.transform.position, -transform.up);
-        RaycastHit2D SlimeFeet2 = Physics2D.Raycast(slimeFeet2.transform.position, -transform.up);
-        RaycastHit2D SlimeFeet3 = Physics2D.Raycast(slimeFeet3.transform.position, -transform.up);
-        Debug.DrawRay(slimeFeet1.transform.position, -transform.up, Color.green);
-        Debug.DrawRay(slimeFeet2.transform.position, -transform.up, Color.green);
-        Debug.DrawRay(slimeFeet3.transform.position, -transform.up, Color.green);
     }
 
     private void SlimeMoveDirection() //Sets the slimes movement direction
