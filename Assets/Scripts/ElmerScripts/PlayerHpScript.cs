@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine;
 
@@ -17,6 +18,14 @@ public class PlayerHpScript : MonoBehaviour
     public GameObject hitParticle;
     public GameObject deathParticle;
     public GameObject sfx;
+    public Animator UIanim;
+
+
+    [Header("disable on death")]
+    public PlayerAttack playerattack;
+    public PlayerAnimationHandler PlayerAnimationHandler;
+    public PlayerMovement playerMovement;
+    public Dash dash;
 
     // Start is called before the first frame update
     void Start()
@@ -30,29 +39,44 @@ public class PlayerHpScript : MonoBehaviour
         UpdateIFrames();
         if (Input.GetKeyDown(KeyCode.P))
         {
-            PlayerHit();                     
+            PlayerHit();
         }
     }
 
     //called when player is hit
     public void PlayerHit()
     {
-        if (Hp > 1)
+        if (iFramesLeft <= 0)
         {
-            iFramesLeft = iFrames;
-            Instantiate(hitParticle, transform.parent);
-            Hp -= 1;
-            UIHPDisplay.text = ("" + Hp);
-        } else
-        {
-            Death();
+            if (Hp > 1)
+            {
+                UIanim.Play("UIHurt");
+                iFramesLeft = iFrames;
+                Instantiate(hitParticle, transform.parent);
+                Hp -= 1;
+                UIHPDisplay.text = ("" + Hp);
+            }
+            else
+            {
+                Death();
+            }
         }
     }
     void Death()
     {
-        Hp -= 1;
+        PlayerAnimationHandler.enabled = false;
+        playerattack.enabled = false;
+        playerMovement.enabled = false;
+        dash.enabled = false;
+        UIanim.Play("UIDeath");
+        Hp = 0;
         UIHPDisplay.text = ("" + Hp);
         Instantiate(deathParticle, gameObject.transform);
+    }
+
+    public void LoadMenu()
+    {
+        SceneManager.LoadScene("Menu");
     }
     private void UpdateIFrames()
     {

@@ -16,9 +16,6 @@ public class Dash : MonoBehaviour
     private PlayerMovement movementScript;
     public float dashSpeed;
 
-    [Header("particles and sounds")]
-    public GameObject dashSound = null;
-    public GameObject dashParticle = null;
     Vector2 dir;
 
     void Start()
@@ -64,8 +61,6 @@ public class Dash : MonoBehaviour
 
     void StartDash()
     {
-        Instantiate(dashSound, transform);
-        Instantiate(dashParticle, transform);
         currentDashDuration = dashDuration;
         dir = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
     }
