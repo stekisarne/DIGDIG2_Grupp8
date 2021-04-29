@@ -10,10 +10,11 @@ TagManager:
   - Walls
   - Enemy
   - Turret
-  - Turret
   - Enemy
   - Chest
   - Item
+  - Turret2
+  - Turret3
   - Inventory
   - ZoomTrigger
   layers:
@@ -27,7 +28,7 @@ TagManager:
   - 
   - Player
   - Background
-  - 
+  - TurretRaycast
   - 
   - 
   - 
