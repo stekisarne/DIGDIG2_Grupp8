@@ -9,15 +9,40 @@ public class RasmusQuickCamera : MonoBehaviour
     public int sceneIndex; // Current SceneIndex
     public float camYOffset; // Offset on y axis.
     public GameObject camParent;
+    public float currentCameraZoom;
+    public Camera cam;
+    bool cameraZooming;
+    public float normalCameraZoom;
+    public float bossCameraZoom;
+    public float lerpTime;
 
+    Texture2D chungTexture = null;
+
+    private void Start()
+    {
+
+    }
 
     void Update()
     {
+        //Pixelizer(chungTexture);
         if (Input.GetKeyDown(KeyCode.E))
         {
             StartCoroutine(CameraShake(2f, 0.3f, 0.5f, 0.5f));
         }
+        if (cameraZooming)
+        {
+            
+        }
+        cam.orthographicSize = currentCameraZoom;
     }
+
+    void cameraZoom()
+    {
+
+            currentCameraZoom = Mathf.Lerp(normalCameraZoom, bossCameraZoom, Time.deltaTime * lerpTime);
+    }
+
     void FixedUpdate()
     {
         camParent.transform.position = new Vector3(camParent.transform.position.x, followTransform.position.y + camYOffset, camParent.transform.position.z);

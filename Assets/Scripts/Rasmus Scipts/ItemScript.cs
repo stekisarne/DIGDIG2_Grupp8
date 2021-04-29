@@ -11,7 +11,7 @@ public class ItemScript : MonoBehaviour
 
     void Start()
     {
-        invSys = GameObject.FindGameObjectWithTag("Player").GetComponent<InventorySystem>();
+        invSys = GameObject.FindGameObjectWithTag("Inventory").GetComponent<InventorySystem>();
     }
 
     void Update()

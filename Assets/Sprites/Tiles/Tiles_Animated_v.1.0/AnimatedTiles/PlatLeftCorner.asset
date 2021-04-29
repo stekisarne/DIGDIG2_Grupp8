@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 13b75c95f34a00d4e8c04f76b73312e6, type: 3}
-  m_Name: PlayLeftCorner
+  m_Name: PlatLeftCorner
   m_EditorClassIdentifier: 
   m_AnimatedSprites:
   - {fileID: -5250594739907370797, guid: 64ed48b1957f1ed41bb0131d500373a6, type: 3}
@@ -21,4 +21,4 @@ MonoBehaviour:
   m_MaxSpeed: 6
   m_AnimationStartTime: 0
   m_AnimationStartFrame: 0
-  m_TileColliderType: 0
+  m_TileColliderType: 1

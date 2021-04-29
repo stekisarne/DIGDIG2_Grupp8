@@ -14,7 +14,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 0.609
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -199,7 +199,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 359470233181721766, guid: 2fc4b5ee43f1cae49baa1cfc479ac6b8, type: 3}
+      propertyPath: m_Mass
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 359470233181721766, guid: 2fc4b5ee43f1cae49baa1cfc479ac6b8, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 1498789566, guid: 2fc4b5ee43f1cae49baa1cfc479ac6b8, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 2fc4b5ee43f1cae49baa1cfc479ac6b8, type: 3}
 --- !u!1 &3329042378000879573 stripped
 GameObject:
