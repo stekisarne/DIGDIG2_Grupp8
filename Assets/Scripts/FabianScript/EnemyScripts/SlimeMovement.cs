@@ -4,49 +4,30 @@ using UnityEngine;
 
 public class SlimeMovement : MonoBehaviour
 {
-    public Rigidbody2D rBody; //Component rigidbody
-    public float enemySlimeSpeed; //Variabel for enemy speed
-    public bool movingRight; //A bool to check if the enemy is moving right
-    public bool movingLeft; //A bool to check if the enemy is moving left
-    public bool movingUp; //A bool to check if the enemy is moving up
-    public bool movingDown; //A bool to check if the enemy is moving down
-    public float rotationAngle; //Sets the rotation angle 
-    public GameObject slimeFeet1;
-    public bool slimeIsOnGround;
+    [SerializeField] List<Transform> wantedPositions; //Makes a list with all the waypoints.
+
+    [SerializeField] int currentPosition; //Variable for the slimes currentPosition.
+
+    [SerializeField] float slimeSpeed; //Variable for the slimes speed.
 
     void Start()
     {
-        rBody = gameObject.GetComponent<Rigidbody2D>(); //Gets rigidbody component
-        movingRight = true;
+        currentPosition = 0; //Sets the current position of the slime to the first way point in the list.
     }
 
     void Update()
     {
-
-        SlimeMoveDirection();
-        rotationAngle = 90.0f;
-    }
-
-    private void SlimeMoveDirection() //Sets the slimes movement direction
-    {
-        if (movingRight == true)
+        if (Vector2.Distance(transform.position, wantedPositions[currentPosition].position) < 0.01f) //Checks where the slime is and if it is close to the waypoint it's going to.
         {
-            rBody.velocity = new Vector2(enemySlimeSpeed, 0.0f); //Sets enemy movement when movingRight
+            currentPosition++; //Makes the slime target the next way point.
+
+            if (currentPosition > wantedPositions.Count - 1) //If the slimes is at the last way point it resets which waypoint it'sgoing to.
+            {
+                currentPosition = 0;
+            }
         }
 
-        if (movingLeft == true)
-        {
-            rBody.velocity = new Vector2(-enemySlimeSpeed, 0.0f); //Sets enemy movement when movingLeft
-        }
-
-        if (movingUp == true)
-        {
-            rBody.velocity = new Vector2(0.0f, enemySlimeSpeed); //Sets enemy movement when movingUp
-        }
-
-        if (movingDown == true)
-        {
-            rBody.velocity = new Vector2(0.0f, -enemySlimeSpeed); //Sets enemy movement when movingDown
-        }
+        transform.position = Vector3.MoveTowards(transform.position, wantedPositions[currentPosition].position, slimeSpeed * Time.deltaTime); //Slime moves towards the next target waypoint in the list.
+        transform.rotation = wantedPositions[currentPosition].rotation; //The slime takes the rotation of the current waypoint.
     }
 }

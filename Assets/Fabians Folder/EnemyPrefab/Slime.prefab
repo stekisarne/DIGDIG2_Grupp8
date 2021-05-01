@@ -104,7 +104,6 @@ GameObject:
   - component: {fileID: 7404300223607995746}
   - component: {fileID: 7404300223607995757}
   - component: {fileID: 2032253269}
-  - component: {fileID: 3208953604821922603}
   m_Layer: 0
   m_Name: Slime
   m_TagString: Untagged
@@ -237,17 +236,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 425860458e530f7478ae8da43072df42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rBody: {fileID: 0}
-  enemySlimeSpeed: 0
-  movingRight: 0
-  movingLeft: 0
-  movingUp: 0
-  movingDown: 0
-  rotationAngle: 0
-  circleCollider: {fileID: 0}
-  slimeFeet1: {fileID: 5832074615288351603}
-  slimeFeet2: {fileID: 422653782}
-  slimeFeet3: {fileID: 1247687302}
+  wantedPositions:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  currentPosition: 0
+  slimeSpeed: 5
 --- !u!50 &2032253269
 Rigidbody2D:
   serializedVersion: 4
@@ -269,19 +268,3 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!58 &3208953604821922603
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7404300223607995747}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.48, y: -0.545}
-  serializedVersion: 2
-  m_Radius: 0.04
