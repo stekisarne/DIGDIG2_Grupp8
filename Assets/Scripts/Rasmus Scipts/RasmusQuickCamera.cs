@@ -11,12 +11,9 @@ public class RasmusQuickCamera : MonoBehaviour
     public GameObject camParent;
     public float currentCameraZoom;
     public Camera cam;
-    bool cameraZooming;
     public float normalCameraZoom;
-    public float bossCameraZoom;
+    public float newZoom;
     public float lerpTime;
-
-    Texture2D chungTexture = null;
 
     private void Start()
     {
@@ -30,17 +27,12 @@ public class RasmusQuickCamera : MonoBehaviour
         {
             StartCoroutine(CameraShake(2f, 0.3f, 0.5f, 0.5f));
         }
-        if (cameraZooming)
-        {
-            
-        }
-        cam.orthographicSize = currentCameraZoom;
+        cameraZoom();
     }
 
-    void cameraZoom()
+    public void cameraZoom()
     {
-
-            currentCameraZoom = Mathf.Lerp(normalCameraZoom, bossCameraZoom, Time.deltaTime * lerpTime);
+        cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, newZoom, Time.deltaTime * lerpTime);
     }
 
     void FixedUpdate()
