@@ -31,13 +31,11 @@ public class EnemyAttack : MonoBehaviour
         {
             enemyAnimator.SetBool("NearPlayer", true);
             enemyMovement.enemySpeed = 0;
-            walkAudio.Stop();
         }
         else if(other.tag != "Player")
         {
             enemyAnimator.SetBool("NearPlayer", false);
             enemyMovement.enemySpeed = 1.5f;
-            walkAudio.Play();
         }
     }
 
