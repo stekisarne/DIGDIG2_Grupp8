@@ -12,11 +12,13 @@ public class EnemyAttack : MonoBehaviour
     public GameObject mouth; //Gameobject where a bite particle Instantiates
     public AudioSource attackAudio;
     public AudioSource walkAudio;
+    PlayerHpScript playerHp;
 
     void Start()
     {
         enemyAnimator = FindObjectOfType<Animator>();
         enemyMovement = FindObjectOfType<EnemyMovement>();
+        playerHp = FindObjectOfType<PlayerHpScript>();
         walkAudio.Play();
     }
 
@@ -43,5 +45,6 @@ public class EnemyAttack : MonoBehaviour
     {
         Instantiate(biteParticle, mouth.transform);
         attackAudio.Play();
+        playerHp.PlayerHit();
     }
 }
