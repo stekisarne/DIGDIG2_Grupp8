@@ -7,7 +7,7 @@ public class ItemScript : MonoBehaviour
     public int itemIndex;
     InventorySystem invSys = null;
     bool pickedUp = false;
-    float timer = 1f;
+    float timer = 0.05f;
 
     void Start()
     {
@@ -16,7 +16,7 @@ public class ItemScript : MonoBehaviour
 
     void Update()
     {
-        timer = timer - 1 * Time.deltaTime;
+        timer = timer - 1f * Time.deltaTime;
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {

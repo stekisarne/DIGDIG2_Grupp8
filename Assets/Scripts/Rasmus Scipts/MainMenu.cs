@@ -10,6 +10,7 @@ public class MainMenu : MonoBehaviour
     public GameObject infoMenu;
     public GameObject buttons;
 
+    bool info = false;
     void Start()
     {
 
@@ -17,22 +18,29 @@ public class MainMenu : MonoBehaviour
 
     void Update()
     {
-        
+        if(info && Input.GetButtonDown("Fire1"))
+        {
+            Back();
+        }
     }
 
     public void Play()
     {
-
+        SceneManager.LoadScene(1);
     }
 
     public void Info()
     {
-        
+        info = true;
+        infoMenu.SetActive(true);
+        buttons.SetActive(false);
     }
 
     public void Back()
     {
-
+        info = false;
+        infoMenu.SetActive(false);
+        buttons.SetActive(true);
     }
 
     public void Exit()
