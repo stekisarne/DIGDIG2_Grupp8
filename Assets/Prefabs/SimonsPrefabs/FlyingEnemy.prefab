@@ -150,12 +150,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flyingRBody: {fileID: 3092521206593265761}
   player: {fileID: 0}
+  distanceFromPlayer: 0
   flyingEnemySpeed: 5
   chasingSpeed: 15
   detectionRange: 10
   patrolDistance: 5
   maxDistanceReached: 0
   chargeNoise: {fileID: 5416579518488379351}
+  currentState: 0
 --- !u!95 &3092521206593265773
 Animator:
   serializedVersion: 3
@@ -190,6 +192,7 @@ MonoBehaviour:
   flyingEnemyDamage: 20
   cooldown: 2
   cooldownTimer: 0
+  explosionRange: 3
 --- !u!114 &7716432107608280219
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -203,8 +206,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseHp: 10
-  enemyHp: 0
-  Timer: 0
+  scaling: 0.03
+  extraLives: 0
+  DeathSequence: {fileID: 0}
+  currentHp: 0
 --- !u!82 &5416579518488379351
 AudioSource:
   m_ObjectHideFlags: 0

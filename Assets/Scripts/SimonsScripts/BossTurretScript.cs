@@ -7,29 +7,48 @@ public class BossTurretScript : MonoBehaviour
     public Vector2 direction;
     public float distance;
     public LayerMask mask;
-    public float turretDamage;
+    public float randomCooldown;
+    public float nextAttack;
     // Start is called before the first frame update
     void Start()
     {
         SetDirection();
         mask = LayerMask.GetMask("Player");
+        randomCooldown = Random.Range(2f, 5f);
+        nextAttack = Time.time + randomCooldown;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Invoke("Fire", Random.Range(1f, 5f));
+        Fire();
     }
 
     void Fire()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, distance, mask);
-
-        if(hit.collider != null)
+        if(nextAttack - Time.time <= 1f && nextAttack - Time.time > 0f)
         {
-          Health healthToDamage = hit.collider.GetComponent<Health>();
-            healthToDamage.OnHit(turretDamage, Vector2.zero, 0f);
+
         }
+
+        if(Time.time >= nextAttack)
+        {
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, distance, mask);
+
+            if (hit.collider != null)
+            {
+                PlayerHpScript healthToDamage = hit.collider.GetComponent<PlayerHpScript>();
+                healthToDamage.PlayerHit();
+                randomCooldown = Random.Range(2f, 5f);
+                nextAttack = Time.time + randomCooldown;
+            }
+            else
+            {
+                randomCooldown = Random.Range(2f, 5f);
+                nextAttack = Time.time + randomCooldown;
+            }
+        }
+        
     }
 
     void SetDirection()
