@@ -5,40 +5,51 @@ using UnityEngine;
 public class FlyingEnemyAttack : MonoBehaviour
 {
     public int flyingEnemyDamage;
-    public float cooldown;
-    public float cooldownTimer;
+
+
+    public float explosionRange;
+
     FlyingEnemyMovement flyingEnemyMovement;
     PlayerHpScript playerHealth;
+    Health flyingEnemyHealth;
+
     void Start()
     {
         playerHealth = FindObjectOfType<PlayerHpScript>();
-        flyingEnemyMovement = FindObjectOfType<FlyingEnemyMovement>();
+        flyingEnemyMovement = GetComponent<FlyingEnemyMovement>();
+        flyingEnemyHealth = GetComponent<Health>();
     }
 
-    
+
     void Update()
     {
-        if (cooldownTimer > 0)
+        Explosion();
+    }
+
+    void Explosion()
+    {
+        if (explosionRange > flyingEnemyMovement.distanceFromPlayer)
         {
-            cooldownTimer -= Time.deltaTime;
+            flyingEnemyMovement.currentState = FlyingEnemyMovement.State.Exploding;
+
+            Invoke("Explode", 1);
         }
     }
 
-    public void OnTriggerStay2D(Collider2D other)
+    void Explode()
     {
-        if(other.tag == "Player")
+
+        if (explosionRange > flyingEnemyMovement.distanceFromPlayer)
         {
-            Invoke("DamagePlayer", 1);
+            playerHealth.PlayerHit();
+            Destroy(gameObject);
         }
+        else
+        {
+            Destroy(gameObject);
+        }
+
 
     }
 
-    /*private void DamagePlayer()
-    {
-        if (cooldownTimer <= 0)
-        {
-            playerHealth.playerHp -= flyingEnemyDamage;
-            cooldownTimer = cooldown;
-        }
-    }*///this is outdated
 }

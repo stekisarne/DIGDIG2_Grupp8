@@ -6,8 +6,8 @@ using UnityEngine;
 public class FlyingEnemyMovement : MonoBehaviour
 {
     public Rigidbody2D flyingRBody;
-    public Transform player;
-
+    public GameObject player;
+    public float distanceFromPlayer;
     public float flyingEnemySpeed;
     public float chasingSpeed;
     public float detectionRange;
@@ -21,8 +21,8 @@ public class FlyingEnemyMovement : MonoBehaviour
 
    public AudioSource chargeNoise;
 
-    private enum State { Patrolling, Chasing, Idle }
-    State currentState;
+    public enum State { Patrolling, Chasing, Idle, Exploding }
+    public State currentState;
 
     void Start()
     {
@@ -33,7 +33,9 @@ public class FlyingEnemyMovement : MonoBehaviour
         flyingRBody = GetComponent<Rigidbody2D>();
 
         currentState = State.Patrolling;
-        
+
+        player = GameObject.FindGameObjectWithTag("Player");
+        distanceFromPlayer = Vector2.Distance(transform.position, player.transform.position);
     }
 
 
@@ -73,11 +75,13 @@ public class FlyingEnemyMovement : MonoBehaviour
 
     void FlyingEnemyMove()
     {
-        float distance = Vector2.Distance(transform.position, player.position);
 
+         distanceFromPlayer = Vector2.Distance(transform.position, player.transform.position);
+
+        
         Vector3 dir = (player.transform.position - flyingRBody.transform.position).normalized;
 
-        if (currentState == State.Idle && distance < detectionRange || currentState == State.Patrolling && distance < detectionRange)
+        if (currentState == State.Idle && distanceFromPlayer < detectionRange || currentState == State.Patrolling && distanceFromPlayer < detectionRange)
         {
 
             flyingRBody.velocity = Vector2.zero;
