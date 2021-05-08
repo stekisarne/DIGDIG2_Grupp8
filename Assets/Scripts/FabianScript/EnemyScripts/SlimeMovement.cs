@@ -8,8 +8,6 @@ public class SlimeMovement : MonoBehaviour
 
     [SerializeField] int currentPosition; //Variable for the slimes currentPosition.
 
-    [SerializeField] float slimeSpeed; //Variable for the slimes speed.
-
     void Start()
     {
         currentPosition = 0; //Sets the current position of the slime to the first way point in the list.
@@ -27,7 +25,7 @@ public class SlimeMovement : MonoBehaviour
             }
         }
 
-        transform.position = Vector3.MoveTowards(transform.position, wantedPositions[currentPosition].position, slimeSpeed * Time.deltaTime); //Slime moves towards the next target waypoint in the list.
+        transform.position = Vector2.MoveTowards(transform.position, wantedPositions[currentPosition].position, 2 * Time.deltaTime); //Slime moves towards the next target waypoint in the list.
         transform.rotation = wantedPositions[currentPosition].rotation; //The slime takes the rotation of the current waypoint.
     }
 }
