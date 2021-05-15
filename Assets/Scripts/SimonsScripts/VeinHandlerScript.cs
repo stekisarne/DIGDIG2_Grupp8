@@ -18,10 +18,10 @@ public class VeinHandlerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        VeinPos1 = new Vector3(parent.transform.position.x - 4f, parent.transform.position.y, 0);
-        VeinPos2 = new Vector3(parent.transform.position.x, parent.transform.position.y + 4f, 0);
-        VeinPos3 = new Vector3(parent.transform.position.x + 4f, parent.transform.position.y, 0);
-        VeinPos4 = new Vector3(parent.transform.position.x, parent.transform.position.y - 4f, 0);
+        VeinPos1 = new Vector3(parent.transform.position.x - 2f, parent.transform.position.y, 0);
+        VeinPos2 = new Vector3(parent.transform.position.x, parent.transform.position.y + 2f, 0);
+        VeinPos3 = new Vector3(parent.transform.position.x + 2f, parent.transform.position.y, 0);
+        VeinPos4 = new Vector3(parent.transform.position.x, parent.transform.position.y - 2f, 0);
         SpawnVeins();
     }
 

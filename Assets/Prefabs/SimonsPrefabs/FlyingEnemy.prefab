@@ -190,8 +190,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flyingEnemyDamage: 20
-  cooldown: 2
-  cooldownTimer: 0
   explosionRange: 3
 --- !u!114 &7716432107608280219
 MonoBehaviour:
@@ -208,7 +206,7 @@ MonoBehaviour:
   baseHp: 10
   scaling: 0.03
   extraLives: 0
-  DeathSequence: {fileID: 0}
+  DeathSequence: {fileID: 6615811407672605029, guid: 3c9d455d76a8ec94bad304d1239ee748, type: 3}
   currentHp: 0
 --- !u!82 &5416579518488379351
 AudioSource:
