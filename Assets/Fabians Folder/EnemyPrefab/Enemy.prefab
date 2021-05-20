@@ -232,7 +232,7 @@ MonoBehaviour:
   baseHp: 2
   scaling: 0.03
   extraLives: 0
-  DeathSequence: {fileID: 0}
+  DeathSequence: {fileID: 6615811407672605029, guid: 3c9d455d76a8ec94bad304d1239ee748, type: 3}
   currentHp: 0
 --- !u!114 &5895125912447885178
 MonoBehaviour:
@@ -266,7 +266,7 @@ MonoBehaviour:
   - {x: -0.11851692, y: -0.28845048, z: 0}
   m_ShapePathHash: 533624307
   m_Mesh: {fileID: 0}
-  m_InstanceId: 19754
+  m_InstanceId: 20840
 --- !u!1001 &3316537730019221103
 PrefabInstance:
   m_ObjectHideFlags: 0
