@@ -6,9 +6,15 @@ public class EaterScript : MonoBehaviour
 {
     [SerializeField] float eaterSpeed;
     public AudioSource alarm;
+    public bool bossTime = false;
+    public PlayerHpScript playerHP;
     void Update()
     {
-        transform.Translate(0, -eaterSpeed * Time.deltaTime, 0); // Moves eater up or down depending on eaterSpeed
+        if (!bossTime)
+        {
+            transform.Translate(0, -eaterSpeed * Time.deltaTime, 0); // Moves eater up or down depending on eaterSpeeds
+        }
+        if (bossTime) { Destroy(gameObject, 2f); }
     }
 
     void EatChunk(GameObject ChunkToDestroy) // Destroys ChunkToDestroy 5 seconds after touching
@@ -16,23 +22,21 @@ public class EaterScript : MonoBehaviour
         Destroy(ChunkToDestroy, 5f);
     }
 
-    
-
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.tag == "Chunk")
+        if (other.tag == "Chunk")
         {
             print("chunker");
             EatChunk(other.gameObject); // Calls function and sends the GameObject of triggering object
         }
-        if(other.tag == "Player")
+        if (other.tag == "Player")
         {
             alarm.Play();
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if(collision.tag == "Player")
+        if (collision.tag == "Player")
         {
             alarm.Stop();
         }

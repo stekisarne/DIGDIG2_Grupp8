@@ -15,6 +15,7 @@ public class Purchasable : MonoBehaviour
     public Animator chestAnim;
     public AudioSource sSource;
     public AudioClip sClip;
+    bool bought = false;
 
     void Start()
     {
@@ -24,9 +25,13 @@ public class Purchasable : MonoBehaviour
 
     void Update()
     {
-        if(withinReach && Input.GetButtonDown("Fire1"))
+        if (withinReach && Input.GetButtonDown("Fire1"))
         {
-            buy();
+            if (!bought)
+            {
+                buy();
+            }
+
         }
     }
     private void OnTriggerStay2D(Collider2D collision)
@@ -48,7 +53,7 @@ public class Purchasable : MonoBehaviour
 
     void DisplayText()
     {
-        textObject.SetActive(true);
+        if(!bought) textObject.SetActive(true);
     }
 
     public void buy()
@@ -59,6 +64,7 @@ public class Purchasable : MonoBehaviour
         SpawnItem(i);
         chestAnim.SetBool("poped", true);
         sSource.PlayOneShot(sClip);
+        bought = true;
     }
 
     public void SpawnItem(int i)

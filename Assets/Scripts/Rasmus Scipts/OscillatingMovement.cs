@@ -10,7 +10,9 @@ public class OscillatingMovement : MonoBehaviour
     [SerializeField] float timeOffset; // changes phase or start point of sine wave
     [SerializeField] GameObject parent;
     Vector3 startPos;
-    enum Vectors {x, y } // Direction of oscillating movement
+    public bool limit;
+    public float limitThreshold;
+    enum Vectors { x, y } // Direction of oscillating movement
     [SerializeField] Vectors oscVector;
     void Start()
     {
@@ -30,12 +32,23 @@ public class OscillatingMovement : MonoBehaviour
         switch (oscVector)
         {
             case Vectors.x:
-                oscPos.x = Mathf.Sin(Time.time * Mathf.PI * oscSpeed + timeOffset ) * oscLength; // gives oscPos.x the value of a sine wave acording to time.time and different variables
+                oscPos.x = Mathf.Sin(Time.time * Mathf.PI * oscSpeed + timeOffset) * oscLength; // gives oscPos.x the value of a sine wave acording to time.time and different variables
                 transform.position = startPos + oscPos; // Moves object with oscPos sine wave in x axis
                 break;
 
             case Vectors.y:
                 oscPos.y = Mathf.Sin(Time.time * Mathf.PI * oscSpeed + timeOffset) * oscLength; // gives oscPos.y the value of a sine wave acording to time.time and different variables
+                if (limit)
+                {
+                    if (oscPos.y >= limitThreshold)
+                    {
+                        oscPos.y = limitThreshold;
+                    }
+                    else if (oscPos.y <= -limitThreshold)
+                    {
+                        oscPos.y = -limitThreshold;
+                    }
+                }
                 transform.position = startPos + oscPos; // Moves object with oscPos sine wave in y axis
                 break;
         }
