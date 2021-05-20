@@ -13,7 +13,6 @@ public class PlayerAttack : MonoBehaviour
     float angle;
     float knockbackAngleX;
     float knockbackAngleY;
-    bool isSlaming = false;
     private Health target;
     private Vector2 knockbackAngle;
     private Dash dash;
@@ -47,40 +46,44 @@ public class PlayerAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isSlaming == false && currentBasicCD <= 0)
+        if (anim.slaming == false && currentBasicCD <= 0)
         {
             StartBasicAttack();
         }
         currentBasicCD = Mathf.Max(currentBasicCD - Time.deltaTime, 0);
-        if (Input.GetButtonDown("Fire2") && !movementScript.isGrounded && !isSlaming)
-        {
-            anim.slaming = true;
-            isSlaming = true;
-            SlamHB.enabled = true;
-            damage = damage * 2; 
-            Debug.Log("Start Slam");
-            playerRB.velocity = new Vector2(0, -slamVelocity);
-        }
-        if (isSlaming)
+        
+        if (anim.slaming)
         {
             Slaming();
+        }else if(anim.startSlaming)
+        {
+            playerRB.velocity = new Vector2(0, 0);
         }
+        else if (Input.GetButtonDown("Fire2") && !movementScript.isGrounded)
+        {          
+            anim.startSlaming = true;
+            Debug.Log("Start Slam");
+        }
+    }
+    public void StartSlam()
+    {
+        SlamHB.enabled = true;
+        anim.startSlaming = false;
+        anim.slaming = true;
+        playerRB.velocity = new Vector2(0, -slamVelocity);
     }
 
     private void Slaming()
     {
-        movementScript.enabled = false;
-        playerRB.AddForce(new Vector2(0,-slamVelocity));
-        if(playerRB.velocity.y >= 0)
+        movementScript.enabled = false;       
+        if (playerRB.velocity.y >= 0)
         {
             anim.slaming = false;
             Debug.Log("Stop Slam");
             movementScript.enabled = true;
             movementScript.remainingJumps = movementScript.airJumps;
             dash.canDash = true;
-            isSlaming = false;
             SlamHB.enabled = false;
-            damage = damage / 2; //same as above.
         }
     }
 
@@ -92,7 +95,7 @@ public class PlayerAttack : MonoBehaviour
             if (target != null)
             {
                 playerRB.velocity = Vector2.zero;
-                if (isSlaming)
+                if (anim.slaming)
                 {
                     playerRB.velocity = new Vector2(0, bounceUp);
                 }

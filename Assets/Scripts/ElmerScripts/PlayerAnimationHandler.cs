@@ -16,6 +16,7 @@ public class PlayerAnimationHandler : MonoBehaviour
     public bool dashing;
     public bool attacking;
     public bool slaming;
+    public bool startSlaming;
 
     [Header("SFX")]
     public GameObject swingSFX;
@@ -46,7 +47,8 @@ public class PlayerAnimationHandler : MonoBehaviour
 
     private void Update()
     {
-        if (slaming) ChangeAnimationState("slam");
+        if (startSlaming) ChangeAnimationState("startSlam");
+        else if (slaming) ChangeAnimationState("slam");
         else if (dashing) ChangeAnimationState("dash");
         else if (attacking) ChangeAnimationState("attack");
         else if (jumping) ChangeAnimationState("jump");

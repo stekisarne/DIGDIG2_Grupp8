@@ -6,9 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody2D rBody;
     private PlayerAnimationHandler anim;
-
-    public bool freezePlayer = true;
-
+    private PlayerAttack playerAttack;
     public GameObject groundCheck;
     public GameObject wallCheck;
     private Dash dash;
@@ -37,6 +35,7 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        playerAttack = GetComponentInChildren<PlayerAttack>();
         anim = GetComponent<PlayerAnimationHandler>();
         isFacingRight = true;
         rBody = GetComponent<Rigidbody2D>();
@@ -46,18 +45,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (freezePlayer)
-        {
-            GroundWallCheck();
-
-            if (isGrounded)
-            {
-                freezePlayer = false;
-            }
-
-            return;
-        }
-
+        
         GravityAdjuster();
         if (currentWalkCooldown == 0)
         {
@@ -225,5 +213,11 @@ public class PlayerMovement : MonoBehaviour
         {
             rBody.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
         }
+    }
+
+    //slam does not work unless we do this badness, since you can have a childed objects function in anims. oh well :/
+    public void StartSlamBandaid()
+    {
+        playerAttack.StartSlam();
     }
 }
