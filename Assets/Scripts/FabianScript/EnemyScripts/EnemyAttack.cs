@@ -39,9 +39,13 @@ public class EnemyAttack : MonoBehaviour
         }
     }
 
-    public void BiteAttack() //Deals damage to the player when an animationen event triggers this function
+    public void BiteParticle()
     {
         Instantiate(biteParticle, mouth.transform);
+    }
+
+    public void BiteAttack() //Deals damage to the player when an animationen event triggers this function
+    {
         attackAudio.Play();
         playerHp.PlayerHit();
     }
