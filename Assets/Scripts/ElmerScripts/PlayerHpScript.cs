@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class PlayerHpScript : MonoBehaviour
 {
-
     public int Hp;
     public int iFrames;
 
@@ -85,5 +84,11 @@ public class PlayerHpScript : MonoBehaviour
             hitBox.enabled = false;
             iFramesLeft -= 1;
         }
+    }
+
+    public void AddHP()
+    {
+        Hp++;
+        UIHPDisplay.text = ("" + Hp);
     }
 }

@@ -39,6 +39,15 @@ public class EnemyAttack : MonoBehaviour
         }
     }
 
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if(collision.tag == "Player")
+        {
+            enemyAnimator.SetBool("NearPlayer", false);
+            enemyMovement.enemySpeed = 1.5f;
+        }
+    }
+
     public void BiteParticle()
     {
         Instantiate(biteParticle, mouth.transform);

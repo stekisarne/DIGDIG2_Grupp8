@@ -29,7 +29,7 @@ public class ItemScript : MonoBehaviour
 
     public void PickUp()
     {
-        invSys.AddItem(itemIndex);
+        invSys.AddItem();
         Destroy(gameObject);
     }
 }

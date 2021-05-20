@@ -8,6 +8,7 @@ public class InventorySystem : MonoBehaviour
     public List<Items> items = new List<Items>(); //creates a new list based on the class Items
     public GameObject itemsMenu;
     public StatSheet statSheet;
+    public PlayerHpScript playerHp;
     void Start()
     {
         itemsMenu.SetActive(false);
@@ -26,11 +27,12 @@ public class InventorySystem : MonoBehaviour
         }
     }
 
-    public void AddItem(int itemIndex) //adds one to specific itemCounter
+    public void AddItem() //adds one to specific itemCounter
     {
-        print("itemindex" + itemIndex);
-        items[itemIndex].itemCount++;
-        items[itemIndex].UpdateItems();
+        //("itemindex" + itemIndex);
+        //items[itemIndex].itemCount++;
+        //items[itemIndex].UpdateItems();
+        playerHp.AddHP();
     }
 
     public void RemoveItem(int itemIndex)
@@ -46,7 +48,7 @@ public class InventorySystem : MonoBehaviour
             switch (item.itemName) // string in case should line up with name in inspector
             {
                 case "Health":
-                    statSheet.health = item.itemCount;
+                    
                     break;
 
                 case "Power":
