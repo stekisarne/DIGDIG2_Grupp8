@@ -7,6 +7,8 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rBody;
     private PlayerAnimationHandler anim;
 
+    public bool freezePlayer = true;
+
     public GameObject groundCheck;
     public GameObject wallCheck;
     private Dash dash;
@@ -44,7 +46,18 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (freezePlayer)
+        {
+            GroundWallCheck();
+
+            if (isGrounded)
+            {
+                freezePlayer = false;
+            }
+
+            return;
+        }
+
         GravityAdjuster();
         if (currentWalkCooldown == 0)
         {
