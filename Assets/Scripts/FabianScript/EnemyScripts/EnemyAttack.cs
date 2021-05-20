@@ -6,8 +6,8 @@ using UnityEngine;
 public class EnemyAttack : MonoBehaviour
 {
     public int enemyDamage; //Sets the enemy damage 
-    EnemyMovement enemyMovement;
-    Animator enemyAnimator;
+    public EnemyMovement enemyMovement;
+    public Animator enemyAnimator;
     public ParticleSystem biteParticle;
     public GameObject mouth; //Gameobject where a bite particle Instantiates
     public AudioSource attackAudio;
@@ -16,8 +16,6 @@ public class EnemyAttack : MonoBehaviour
 
     void Start()
     {
-        enemyAnimator = FindObjectOfType<Animator>();
-        enemyMovement = FindObjectOfType<EnemyMovement>();
         playerHp = FindObjectOfType<PlayerHpScript>();
         walkAudio.Play();
     }

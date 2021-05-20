@@ -106,7 +106,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.06155467, y: 0}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -117,7 +117,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.1231093, y: 1}
+  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
 --- !u!50 &5895125912447877251
 Rigidbody2D:
@@ -194,6 +194,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyDamage: 50
+  enemyMovement: {fileID: 5895125912447877250}
+  enemyAnimator: {fileID: 5895125912447885180}
   biteParticle: {fileID: 3147968309808696083, guid: 68e082a2d50733d4aa926073dbffc6db, type: 3}
   mouth: {fileID: 5895125914095317667}
   attackAudio: {fileID: 81243999865847172}
@@ -266,7 +268,7 @@ MonoBehaviour:
   - {x: -0.11851692, y: -0.28845048, z: 0}
   m_ShapePathHash: 533624307
   m_Mesh: {fileID: 0}
-  m_InstanceId: 44472
+  m_InstanceId: 27702
 --- !u!1001 &3316537730019221103
 PrefabInstance:
   m_ObjectHideFlags: 0
