@@ -21,39 +21,26 @@ public class BossScript : MonoBehaviour
     void Update()
     {
         SetPhase();
-        MakeInvulnerable();
+        
         BossDeath();
+        
     }
 
     
 
     void SetPhase()
     {
-        if (veinHandler.VeinCount == 0 && currentPhase == Phase.Invulnerable)
-        {
-            Invoke("veinHandler.SpawnVeins", 10f);
-            
-            currentPhase = Phase.Vulnerable;
-        }
-        else if(currentPhase == Phase.Vulnerable)
+        if (veinHandler.VeinCount == 0)
         {
             
-            GetComponent<BoxCollider2D>().enabled = true;
-        }
-    }
-
-    void MakeInvulnerable()
-    {
-        if(veinHandler.VeinCount > 0)
-        {
-            currentPhase = Phase.Invulnerable;
+            veinHandler.SpawnVeins();
+            
         }
 
-        if(currentPhase == Phase.Invulnerable)
-        {
-            GetComponent<BoxCollider2D>().enabled = false;
-        }
+        
     }
+
+    
 
     void BossDeath()
     {

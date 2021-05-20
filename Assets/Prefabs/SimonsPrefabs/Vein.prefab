@@ -49,7 +49,7 @@ MonoBehaviour:
   baseHp: 1
   scaling: 0.03
   extraLives: 0
-  DeathSequence: {fileID: 0}
+  DeathSequence: {fileID: 6615811407672605029, guid: 3c9d455d76a8ec94bad304d1239ee748, type: 3}
   currentHp: 0
 --- !u!212 &6919444993982655812
 SpriteRenderer:
