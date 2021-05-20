@@ -4,17 +4,13 @@ using UnityEngine;
 
 public class BossScript : MonoBehaviour
 {
-    private enum Phase { Vulnerable, Invulnerable }
-    Phase currentPhase;
-
+   
     VeinHandlerScript veinHandler;
 
-    public float damageTaken;
+    public float bossHealth;
     void Start()
     {
         veinHandler = FindObjectOfType<VeinHandlerScript>();
-
-        
     }
 
     
@@ -23,7 +19,6 @@ public class BossScript : MonoBehaviour
         SetPhase();
         
         BossDeath();
-        
     }
 
     
@@ -32,19 +27,17 @@ public class BossScript : MonoBehaviour
     {
         if (veinHandler.VeinCount == 0)
         {
-            
+            bossHealth -= 1f;
             veinHandler.SpawnVeins();
-            
         }
 
-        
     }
 
     
 
     void BossDeath()
     {
-        if(veinHandler.VeinsKilled == 14f)
+        if(bossHealth == 0f)
         {
             Destroy(this.gameObject);
         }

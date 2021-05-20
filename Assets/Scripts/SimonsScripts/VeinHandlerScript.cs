@@ -7,7 +7,6 @@ public class VeinHandlerScript : MonoBehaviour
     public GameObject Vein;
     public GameObject parent;
     public float VeinCount;
-    public float VeinsKilled;
 
     public Vector3 VeinPos1;
     public Vector3 VeinPos2;
@@ -29,7 +28,7 @@ public class VeinHandlerScript : MonoBehaviour
     void Update()
     {
         VeinCount = transform.childCount;
-        VeinKillCounter();
+        
     }
 
    public void SpawnVeins()
@@ -41,11 +40,5 @@ public class VeinHandlerScript : MonoBehaviour
         VeinHealth = GetComponentInChildren<Health>();
     }
 
-    public void VeinKillCounter()
-    {
-        if(VeinHealth.currentHp <= 0)
-        {
-            VeinsKilled += 1;
-        }
-    }
+   
 }
