@@ -180,9 +180,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rBody: {fileID: 0}
   enemySpeed: 1.5
-  enemyGrounded: 0
   movingRight: 0
-  WallDetector: {fileID: 0}
 --- !u!114 &5895125912447885181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -231,9 +229,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e718a83346fc4a947812575858542761, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseHp: 10
-  enemyHp: 0
-  Timer: 0
+  baseHp: 2
+  scaling: 0.03
+  extraLives: 0
+  DeathSequence: {fileID: 0}
+  currentHp: 0
 --- !u!114 &5895125912447885178
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -266,7 +266,7 @@ MonoBehaviour:
   - {x: -0.11851692, y: -0.28845048, z: 0}
   m_ShapePathHash: 533624307
   m_Mesh: {fileID: 0}
-  m_InstanceId: 26002
+  m_InstanceId: 26068
 --- !u!1001 &3316537730019221103
 PrefabInstance:
   m_ObjectHideFlags: 0
