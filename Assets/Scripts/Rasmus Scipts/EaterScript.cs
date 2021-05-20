@@ -7,6 +7,7 @@ public class EaterScript : MonoBehaviour
     [SerializeField] float eaterSpeed;
     public AudioSource alarm;
     public bool bossTime = false;
+    public PlayerHpScript playerHP;
     void Update()
     {
         if (!bossTime)
@@ -20,8 +21,6 @@ public class EaterScript : MonoBehaviour
     {
         Destroy(ChunkToDestroy, 5f);
     }
-
-
 
     private void OnTriggerEnter2D(Collider2D other)
     {
