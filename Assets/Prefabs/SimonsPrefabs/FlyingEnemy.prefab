@@ -79,8 +79,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 5983291479178214126, guid: 931dacb0e6457a749883a5504a1a3fa5,
-    type: 3}
+  m_Sprite: {fileID: 5983291479178214126, guid: 931dacb0e6457a749883a5504a1a3fa5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -205,11 +204,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e718a83346fc4a947812575858542761, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseHp: 10
+  baseHp: 1
   scaling: 0.03
   extraLives: 0
-  DeathSequence: {fileID: 6615811407672605029, guid: 3c9d455d76a8ec94bad304d1239ee748,
-    type: 3}
+  DeathSequence: {fileID: 6615811407672605029, guid: 3c9d455d76a8ec94bad304d1239ee748, type: 3}
   currentHp: 0
 --- !u!82 &5416579518488379351
 AudioSource:
@@ -336,4 +334,4 @@ MonoBehaviour:
   - {x: -0.4977103, y: 0.43817782, z: 0}
   m_ShapePathHash: 145823643
   m_Mesh: {fileID: 0}
-  m_InstanceId: 34962
+  m_InstanceId: 18646
