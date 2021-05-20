@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine;
 
@@ -26,6 +25,7 @@ public class PlayerHpScript : MonoBehaviour
     public PlayerAnimationHandler PlayerAnimationHandler;
     public PlayerMovement playerMovement;
     public Dash dash;
+    public SpriteRenderer playerSprite;
 
     // Start is called before the first frame update
     void Start()
@@ -56,7 +56,7 @@ public class PlayerHpScript : MonoBehaviour
                 Hp -= 1;
                 UIHPDisplay.text = ("" + Hp);
             }
-            else
+            else if (Hp == 1)
             {
                 Death();
             }
@@ -68,16 +68,14 @@ public class PlayerHpScript : MonoBehaviour
         playerattack.enabled = false;
         playerMovement.enabled = false;
         dash.enabled = false;
+        playerSprite.enabled = false;
         UIanim.Play("UIDeath");
         Hp = 0;
         UIHPDisplay.text = ("" + Hp);
         Instantiate(deathParticle, gameObject.transform);
     }
 
-    public void LoadMenu()
-    {
-        SceneManager.LoadScene("Menu");
-    }
+   
     private void UpdateIFrames()
     {
         if (iFrames > 0)

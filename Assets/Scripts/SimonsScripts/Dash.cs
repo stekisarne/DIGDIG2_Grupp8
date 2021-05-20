@@ -62,7 +62,19 @@ public class Dash : MonoBehaviour
     void StartDash()
     {
         currentDashDuration = dashDuration;
-        dir = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        if (Input.GetAxis("Vertical") != 0)
+        {
+            dir = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        }
+        else if (movementScript.isFacingRight)
+        {
+            dir = Vector2.right;
+
+        }
+        else
+        {
+            dir = Vector2.left;
+        }
     }
     
     void Dashing()

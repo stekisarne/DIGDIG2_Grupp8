@@ -346,7 +346,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1416974198}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -370,10 +370,10 @@ MonoBehaviour:
   movementScript: {fileID: 0}
   slamVelocity: 80
   bounceUp: 50
-  damage: 1
+  damage: 10000
   basicCD: 0.2
   knockbackForce: 30
-  selfKnockbackForce: 12
+  selfKnockbackForce: 5
   lungeDamper: 250
 --- !u!1 &1936173656
 GameObject:
@@ -447,6 +447,7 @@ MonoBehaviour:
   PlayerAnimationHandler: {fileID: 754813448}
   playerMovement: {fileID: 1406628271}
   dash: {fileID: 1887827524}
+  playerSprite: {fileID: 8209819323253411603}
 --- !u!1 &1344788473752822158
 GameObject:
   m_ObjectHideFlags: 0
@@ -690,6 +691,7 @@ GameObject:
   - component: {fileID: 599567214187531549}
   - component: {fileID: 8487472079765093406}
   - component: {fileID: 2133198816}
+  - component: {fileID: 2133198813}
   m_Layer: 5
   m_Name: HPDisplay
   m_TagString: Untagged
@@ -775,6 +777,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2133198813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5337048761019018056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc052ebb038eeb148842613f4b4425f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8209819322542606125
 GameObject:
   m_ObjectHideFlags: 0
@@ -1066,6 +1080,7 @@ MonoBehaviour:
   dashing: 0
   attacking: 0
   slaming: 0
+  startSlaming: 0
   swingSFX: {fileID: 0}
   SlamStartSFX: {fileID: 0}
   SlamLandSFX: {fileID: 8463983223724595958, guid: 7322ad83459dcb44c82011218058e310, type: 3}
