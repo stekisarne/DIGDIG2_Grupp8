@@ -8,6 +8,18 @@ public class SlimeMovement : MonoBehaviour
 
     [SerializeField] int currentPosition; //Variable for the slimes currentPosition.
 
+    public bool deatachSlime = true;
+
+    public Transform slimeObject;
+
+    private void Awake()
+    {
+        if (deatachSlime == true)
+        {
+            slimeObject.parent = null;
+        }
+    }
+
     void Start()
     {
         currentPosition = 0; //Sets the current position of the slime to the first way point in the list.
